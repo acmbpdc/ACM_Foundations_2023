@@ -40,6 +40,7 @@ nav:
       - 'Graph Theory': './Advanced-1/README.md'
       - 'Linked Lists, Stacks and Queues': './Advanced-2/README.md'
       - 'Hash Sets and Hash Maps': './Advanced-3/README.md'
+      - 'Recursion and Dynamic Programming': './Advanced-4/README.md'
 plugins:
   - search
 markdown_extensions:
