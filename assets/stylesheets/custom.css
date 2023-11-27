@@ -1,0 +1,19 @@
+:root > * {
+    --md-primary-fg-color: #0092cf;
+    --md-accent-fg-color: #01587d;
+
+    --md-primary-fg-color--light: #0092cf;
+    --md-accent-fg-color--dark: #01587d;
+
+    --md-primary-fg-color--light: #0092cf;
+    --md-accent-fg-color--dark: #01587d;
+}
+
+h1 {
+    font-weight: bolder !important;
+    color: var(--md-primary-fg-color) !important;
+}
+
+.md-footer-meta{
+    display: none !important;
+}
