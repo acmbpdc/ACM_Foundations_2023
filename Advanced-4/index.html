@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Advanced-3/">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Recursion and Dynamic Programming - ACM Foundations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-session-4" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ACM Foundations" class="md-header__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACM Foundations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Recursion and Dynamic Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Beginner-1/" class="md-tabs__link">
+          
+  
+  Beginner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Advanced-1/" class="md-tabs__link">
+          
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ACM Foundations" class="md-nav__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    ACM Foundations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists, Stacks and Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Sets and Hash Maps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recursion-and-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion and Dynamic Programming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Programming?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Programming?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursion-vs-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion vs. dynamic programming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leetcode-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leetcode Question
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leetcode Question">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-understanding-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question Understanding-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-down-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top-Down Dynamic Programming:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom-up-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom-Up Dynamic Programming:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-step-to-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Four step to solution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Four step to solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-recursive-approach-top-to-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Recursive Approach--------&gt;Top to Down
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-memorization-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Memorization Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tabulation-bottom-to-up-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tabulation------&gt;Bottom to Up Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-space-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Space Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recursion-and-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion and Dynamic Programming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Programming?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Programming?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursion-vs-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursion vs. dynamic programming
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leetcode-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leetcode Question
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leetcode Question">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-understanding-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question Understanding-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-down-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top-Down Dynamic Programming:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom-up-dynamic-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bottom-Up Dynamic Programming:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complexity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#four-step-to-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Four step to solution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Four step to solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-recursive-approach-top-to-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Recursive Approach--------&gt;Top to Down
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-memorization-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Memorization Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tabulation-bottom-to-up-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tabulation------&gt;Bottom to Up Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-space-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Space Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="advanced-session-4">Advanced Session: 4</h1>
+<h2 id="recursion-and-dynamic-programming">Recursion and Dynamic Programming</h2>
+<h2 id="recursion">Recursion</h2>
+<p>Recursion is like a funhouse mirror, creating a seemingly endless loop of self-referential code. It's a powerful technique that allows functions to call themselves, leading to a series of nested steps that solve complex problems in an elegant way.</p>
+<p><strong>Eg 1:</strong> counting down from a given number. Instead of writing a loop, you could use recursion to create a function that calls itself, decreasing the number by one each time until it reaches zero.</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blast off!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">countdown</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Eg 2:</strong> Factorial calculation (Factorial is the product of all positive integers from 1 to a given number)</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Recursion has both it's pros and cons, as listed below.
+<strong>Advantages of recursion</strong> 
+* Elegant and Concise
+* Modularity and Reusability
+* Ease of Implementation</p>
+<p><strong>Drawbacks of recursion</strong></p>
+<p>Recursion uses memory space less efficiently. Repeated function calls create entries for all the variables and constants in the function stack. As the values are kept there until the function returns, there is always a limited amount of stack space in the system, thus making less efficient use of memory space. Additionally, a stack overflow error occurs if the recursive function requires more memory than is available in the stack.</p>
+<p>Recursion is also relatively slow in comparison to iteration, which uses loops. When a function is called, there is an overhead of allocating space for the function and all its data in the function stack in recursion. This causes a slight delay in recursive functions.</p>
+<h2 id="dynamic-programming">Dynamic Programming?</h2>
+<p>Dynamic programming is a computer programming technique where an algorithmic problem is first broken down into sub-problems, the results are saved, and then the sub-problems are optimized to find the overall solution — which usually has to do with finding the maximum and minimum range of the algorithmic query.</p>
+<h3 id="recursion-vs-dynamic-programming">Recursion vs. dynamic programming</h3>
+<p>In computer science, recursion is a crucial concept in which the solution to a problem depends on solutions to its smaller subproblems.</p>
+<p>Meanwhile, dynamic programming is an optimization technique for recursive solutions. It is the preferred technique for solving recursive functions that make repeated calls to the same inputs. A function is known as recursive if it calls itself during execution. This process can repeat itself several times before the solution is computed and can repeat forever if it lacks a base case to enable it to fulfill its computation and stop the execution.</p>
+<p>However, not all problems that use recursion can be solved by dynamic programming. Unless solutions to the subproblems overlap, a recursion solution can only be arrived at using a divide-and-conquer method.</p>
+<p>For example, problems like merge, sort, and quick sort are not considered dynamic programming problems. This is because they involve putting together the best answers to subproblems that don’t overlap.</p>
+<h2 id="leetcode-question">Leetcode Question</h2>
+<p><a href="https://leetcode.com/problems/unique-paths/description/">Problem Link</a></p>
+<p>There is a robot on an  <code>m x n</code>  grid. The robot is initially located at the  <strong>top-left corner</strong>  (i.e.,  <code>grid[0][0]</code>). The robot tries to move to the  <strong>bottom-right corner</strong>  (i.e.,  <code>grid[m - 1][n - 1]</code>). The robot can only move either down or right at any point in time.</p>
+<p>Given the two integers  <code>m</code>  and  <code>n</code>, return  <em>the number of possible unique paths that the robot can take to reach the bottom-right corner</em>.</p>
+<p>The test cases are generated so that the answer will be less than or equal to  <code>2 * 109</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><img alt="" src="https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png" /></p>
+<p><strong>Input:</strong> m = 3, n = 7
+<strong>Output:</strong> 28</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> m = 3, n = 2
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+1. Right -&gt; Down -&gt; Down
+2. Down -&gt; Down -&gt; Right
+3. Down -&gt; Right -&gt; Down</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= m, n &lt;= 100</code></li>
+</ul>
+<h3 id="solution">Solution</h3>
+<h3 id="question-understanding-">Question Understanding-</h3>
+<p><strong>Given are only two valid moves :</strong></p>
+<ul>
+<li><strong>Move right</strong></li>
+<li><strong>Move down</strong><br />
+    Hence, it is clear number of paths from cell (i,j) = sum of paths from cell( i+1,j) and cell(i,j+1)</li>
+</ul>
+<p><strong>It becomes a DP problem.</strong><br />
+But implementing DP directly  <strong>will lead to TLE</strong>.<br />
+<strong>So memoization is useful -&gt; Storing a result</strong>  so that we donot need to calculate it again.</p>
+<p>dp[i][j] = d[i+1][j] + dp[i][j+1]</p>
+<p><strong>BASE CASES</strong></p>
+<p><strong>If we are in last row</strong>, i == m-1, we only have the choice to move RIGHT, Hence number of moves will be 1.<br />
+<strong>If we are in last column</strong>, j == n-1, we only have the choice to move DOWN, Hence number of moves will be 1.</p>
+<h3 id="top-down-dynamic-programming"><strong>Top-Down Dynamic Programming:</strong></h3>
+<p><strong>Step 1: Initialize the Memoization Table</strong></p>
+<ul>
+<li><strong>Create a memoization table</strong>  (an auxiliary 2D array) of size m x n to store computed results. Initialize all entries to -1 to indicate that no results have been computed yet.</li>
+</ul>
+<p><strong>Step 2: Recursive Function</strong></p>
+<ul>
+<li><strong>Implement a recursive function</strong>, say  <strong>uniquePathsRecursive(x, y, m, n, memo)</strong>, which calculates the number of unique paths to reach cell (x, y) from the top-left corner.</li>
+<li>
+<p><strong>In this function:</strong></p>
+<ul>
+<li>
+<p><strong>Check if (x, y) is the destination cell</strong>  (m - 1, n - 1). If yes, return 1 since there is one way to reach the destination.</p>
+</li>
+<li>
+<p><strong>Check if the result for (x, y) is already computed</strong>  in the memoization table (memo[x][y] != -1).  <strong>If yes, return the stored result.</strong></p>
+</li>
+<li>
+<p><strong>Otherwise, calculate the number of unique paths</strong>  by recursively moving right and down (if valid) and adding the results.  <strong>Use the following logic:</strong><br />
+    ➡<strong>If (x, y) can move right</strong>  (i.e., x &lt; m - 1), calculate rightPaths = uniquePathsRecursive(x + 1, y, m, n, memo).<br />
+    ➡  <strong>If (x, y) can move down</strong>  (i.e., y &lt; n - 1), calculate downPaths = uniquePathsRecursive(x, y + 1, m, n, memo).<br />
+    ➡  <strong>The total unique paths to (x, y) are rightPaths + downPaths.</strong><br />
+    ➡<strong> Store the result</strong> in the memoization table (memo[x][y]) and return it.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="code">Code:</h3>
+<p><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Create a memoization table to store computed results</span>
+        <span class="n">memo</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+        <span class="c1"># Call the recursive function to compute unique paths</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">uniquePathsRecursive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">uniquePathsRecursive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># If we reach the destination (bottom-right corner), return 1</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+
+        <span class="c1"># If we have already computed the result for this cell, return it from the memo table</span>
+        <span class="k">if</span> <span class="n">memo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+
+        <span class="c1"># Calculate the number of unique paths by moving right and down</span>
+        <span class="n">rightPaths</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">downPaths</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Check if it&#39;s valid to move right</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">rightPaths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uniquePathsRecursive</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="c1"># Check if it&#39;s valid to move down</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">downPaths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uniquePathsRecursive</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">memo</span><span class="p">)</span>
+
+        <span class="c1"># Store the result in the memo table and return it</span>
+        <span class="n">memo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">rightPaths</span> <span class="o">+</span> <span class="n">downPaths</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+</code></pre></div>
+<strong>Step 3: Invoke the Recursive Function</strong></p>
+<ul>
+<li>Call the recursive function with the initial arguments (0, 0, m, n, memo) to find the number of unique paths.</li>
+</ul>
+<p><strong>Step 4: Return the Result</strong></p>
+<ul>
+<li>The result obtained from the recursive function call represents the number of unique paths from the top-left corner to the bottom-right corner.</li>
+</ul>
+<h3 id="bottom-up-dynamic-programming"><strong>Bottom-Up Dynamic Programming:</strong></h3>
+<p><strong>Step 1: Initialize the DP Table</strong></p>
+<ul>
+<li>Create a 2D DP (dynamic programming) table of  <strong>size m x n</strong>  to store the number of unique paths for each cell.</li>
+<li><strong>Initialize the rightmost column and bottom row of the DP table to 1</strong>  because there's only one way to reach each cell in those rows/columns (by moving all the way right or all the way down).</li>
+</ul>
+<p><strong>Step 2: Fill in the DP Table</strong></p>
+<ul>
+<li><strong>Start from the second-to-last</strong>  row and second-to-last column (i.e., i = m - 2 and j = n - 2).</li>
+<li><strong>For each cell (i, j) in the grid:</strong><ul>
+<li>Calculate the  <strong>number of unique paths to reach (i, j)</strong>  as the sum of the unique paths from the cell below (i+1, j) and  <strong>the cell to the right (i, j+1)</strong>. Use this formula:  <strong>dp[i][j] = dp[i+1][j] + dp[i][j+1].</strong></li>
+<li><strong>Continue filling</strong>  in the DP table row by row and column by column until you reach the top-left corner (dp[0][0]).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 3: Return the Result</strong></p>
+<ul>
+<li>Return the value stored in the top-left corner of the DP table (dp[0][0]), which represents the number of unique paths from the top-left corner to the bottom-right corner.</li>
+</ul>
+<h3 id="code_1">Code:</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># Create a 2D DP table filled with zeros</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+        <span class="c1"># Initialize the rightmost column and bottom row to 1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Fill in the DP table bottom-up</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Return the result stored in the top-left corner</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="complexity">Complexity</h2>
+<hr />
+<p><strong>Bottom-Up Dynamic Programming:</strong><br />
+<strong>Time Complexity (TC):</strong>  The bottom-up approach fills in the DP table iteratively, visiting each cell once. There are m rows and n columns in the grid, so the TC is  <strong>O(m * n)</strong>.<br />
+<strong>Space Complexity (SC):</strong>  The space complexity is determined by the DP table, which is of size m x n. Therefore,  <strong>the SC is O(m * n)</strong>  to store the DP table.</p>
+<hr />
+<p><strong>Top-Down Dynamic Programming (with Memoization):</strong><br />
+<strong>Time Complexity (TC):</strong>  O(m * n).<br />
+<strong>Space Complexity (SC):</strong>  O(m + n).</p>
+<h2 id="four-step-to-solution">Four step to solution</h2>
+<h3 id="1-recursive-approach-top-to-down">1. Recursive Approach--------&gt;Top to Down</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span><span class="n">ind2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ind1</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">ind2</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">ind1</span><span class="o">&lt;</span><span class="mi">0</span>  <span class="ow">or</span> <span class="n">ind2</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">ind1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">ind2</span><span class="p">)</span><span class="o">+</span><span class="n">solve</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span><span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-memorization-approach">2. Memorization Approach</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+   <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+       <span class="n">dp</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+       <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span><span class="n">ind2</span><span class="p">):</span>
+           <span class="k">if</span> <span class="n">ind1</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">ind2</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+               <span class="k">return</span> <span class="mi">1</span>
+           <span class="k">if</span> <span class="n">ind1</span><span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">ind2</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+               <span class="k">return</span> <span class="mi">0</span>
+           <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span><span class="o">!=-</span><span class="mi">1</span><span class="p">:</span>
+               <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span>
+           <span class="n">left</span><span class="o">=</span><span class="n">solve</span><span class="p">(</span><span class="n">ind1</span><span class="p">,</span><span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+           <span class="n">up</span><span class="o">=</span><span class="n">solve</span><span class="p">(</span><span class="n">ind1</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">ind2</span><span class="p">)</span>
+           <span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span><span class="o">=</span><span class="n">up</span><span class="o">+</span><span class="n">left</span>
+           <span class="k">return</span> <span class="n">left</span><span class="o">+</span><span class="n">up</span>
+       <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-tabulation-bottom-to-up-approach">3. Tabulation------&gt;Bottom to Up Approach</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">dp</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ind2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind1</span><span class="o">==</span><span class="n">ind2</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">left</span><span class="o">=</span><span class="n">up</span><span class="o">=</span><span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">left</span><span class="o">=</span><span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">ind1</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">up</span><span class="o">=</span><span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">ind1</span><span class="p">][</span><span class="n">ind2</span><span class="p">]</span><span class="o">=</span><span class="n">up</span><span class="o">+</span><span class="n">left</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="4-space-optimization">4. Space Optimization</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">uniquePaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">prev</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">cur</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ind2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">ind1</span><span class="o">==</span><span class="n">ind2</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">cur</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">left</span><span class="o">=</span><span class="n">up</span><span class="o">=</span><span class="mi">0</span>
+                    <span class="k">if</span> <span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">left</span><span class="o">=</span><span class="n">cur</span><span class="p">[</span><span class="n">ind2</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">ind1</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">up</span><span class="o">=</span><span class="n">prev</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span>
+                    <span class="n">cur</span><span class="p">[</span><span class="n">ind2</span><span class="p">]</span><span class="o">=</span><span class="n">up</span><span class="o">+</span><span class="n">left</span>
+            <span class="n">prev</span><span class="o">=</span><span class="n">cur</span>
+        <span class="k">return</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>

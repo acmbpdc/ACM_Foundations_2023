@@ -1,0 +1,1156 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Advanced-1/">
+      
+      
+        <link rel="next" href="../Advanced-3/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Linked Lists, Stacks and Queues - ACM Foundations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acm-foundations-linked-lists-stacks-and-queues" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ACM Foundations" class="md-header__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACM Foundations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linked Lists, Stacks and Queues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Beginner-1/" class="md-tabs__link">
+          
+  
+  Beginner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Advanced-1/" class="md-tabs__link">
+          
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ACM Foundations" class="md-nav__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    ACM Foundations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists, Stacks and Queues
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Sets and Hash Maps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="acm-foundations-linked-lists-stacks-and-queues">ACM Foundations - Linked Lists, Stacks and Queues</h1>
+<h1 id="1-linked-lists">1. Linked Lists</h1>
+<h2 id="11-why-use-linked-lists">1.1 Why use Linked Lists?</h2>
+<p>Let us assume you are making a website and you need to record the names of customers who log in on the site. What size array would you use to store the data? If you select too small a size, then you will run out of space in the array. If you select a size too large you will be wasting space as much of it will be unused. It would be a lot more convenient if we could create a data-structure that could increase or decrease in size depending on how much data you wish to store in it. That is exactly what linked lists are designed for.</p>
+<h2 id="12-how-do-linked-lists-work">1.2 How do Linked Lists Work?</h2>
+<p>A linked list is made up of nodes, each node is a variable that keeps track of two values :
+1. The value of the element in that node
+2. A pointer to the next node in the list (NULL if it is the last node in the list)</p>
+<p>The first node of the list is stored in a variable, generally termed 'head' or 'root'.
+    <img alt="alt text" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Linked-List-Soni/representation-of-linked-list.png" /></p>
+<h2 id="13-linked-list-implementation-python-3x">1.3 Linked List Implementation (Python 3.x)</h2>
+<p>First we need a node that can hold a value and the next node in the chain.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p>Now let us make a simple class where we can add new elements to the list.
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LinkedList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># no node when we create the list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">insert_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+
+        <span class="n">curr_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">while</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+
+        <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></p>
+<p>We can use this class to store email addresses of people who join the site as they come. This code will also print the number of elements in the list after it is created.
+<div class="highlight"><pre><span></span><code><span class="n">emails</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">email_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an email id: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">email_id</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="n">emails</span><span class="o">.</span><span class="n">insert_value</span><span class="p">(</span><span class="n">email_id</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of email ids in the list:&quot;</span><span class="p">,</span> <span class="n">emails</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div></p>
+<p>If we want to print the elements in the list, we can copy the root and iterate over the list till we hit a null value.
+<div class="highlight"><pre><span></span><code><span class="n">curr_node</span> <span class="o">=</span> <span class="n">emails</span><span class="o">.</span><span class="n">root</span>
+
+<span class="k">while</span> <span class="n">curr_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">curr_node</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+</code></pre></div></p>
+<h2 id="14-problem-number-to-linked-list">1.4 Problem : Number to Linked List</h2>
+<p>Take an integer as input and convert it to a linked list where each node is a digit of the number.</p>
+<p>Note that if you try to simply insert the values into the list the number will end up reversed like this : 
+<div class="highlight"><pre><span></span><code><span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+
+<span class="n">ll</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="n">number</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">digit</span> <span class="o">=</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">10</span>
+
+    <span class="n">ll</span><span class="o">.</span><span class="n">insert_value</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">curr_node</span> <span class="o">=</span> <span class="n">ll</span><span class="o">.</span><span class="n">root</span>
+
+<span class="k">while</span> <span class="n">curr_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">curr_node</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; -&gt; &quot;</span><span class="p">)</span>
+    <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+</code></pre></div></p>
+<p>So to solve this issue we have two approaches : 
+1. We create a function to insert an element at the start of a list rather than the end.
+2. We reverse the list after creating it.</p>
+<p>To implement code to add new elements to the start of the list, we can do something like this
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LinkedList</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># no node when we create the list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">insert_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+
+        <span class="n">curr_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">while</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+
+        <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">insert_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">prev_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+
+        <span class="n">new_root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">new_root</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="n">prev_root</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">new_root</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+
+<span class="n">ll</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="n">number</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">digit</span> <span class="o">=</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">10</span>
+
+    <span class="n">ll</span><span class="o">.</span><span class="n">insert_start</span><span class="p">(</span><span class="n">digit</span><span class="p">)</span>
+
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">curr_node</span> <span class="o">=</span> <span class="n">ll</span><span class="o">.</span><span class="n">root</span>
+
+<span class="k">while</span> <span class="n">curr_node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">curr_node</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; -&gt; &quot;</span><span class="p">)</span>
+    <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+</code></pre></div></p>
+<h2 id="15-try-it-yourself">1.5 Try it Yourself</h2>
+<p>Try writing the code to reverse the linked-list by yourself.</p>
+<h1 id="2-stacks">2. Stacks</h1>
+<h2 id="21-what-are-stacks">2.1 What are Stacks?</h2>
+<p>Stacks are a data structure in which elements are inserted one after the other, and the most recent elements are removed first. For example, if we need to make a system where we analyze news articles and need to read the latest articles first before we look at old ones, stacks are perfect for this problem.</p>
+<p><img alt="alt text" src="https://cdn.programiz.com/sites/tutorial2program/files/stack.png" /></p>
+<p>A stack has two main operations that we need to perform : 
+1. Push : Adds a value to the stack
+2. Pop : Removes a value from the stack</p>
+<p>Other common operations are :
+1. Top : Returns the value at the top of the stack
+2. Size : Returns the number of elements in the stack
+3. IsEmpty : True if the stack is empty</p>
+<h2 id="22-stack-implementation-python-3x">2.2 Stack Implementation (Python 3.x)</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Stack</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># no node when we create the list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Adds a value to the top of the stack.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+
+        <span class="n">curr_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="k">while</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+
+        <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Removes a value from the top of the stack</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">value</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="k">return</span> <span class="n">val</span>
+
+        <span class="n">curr_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="c1"># loop to find the 2nd last element in the stack and put it in curr_node</span>
+        <span class="k">while</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span><span class="o">.</span><span class="n">next_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+
+        <span class="n">val</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span><span class="o">.</span><span class="n">value</span> <span class="c1"># val = last element in the stack</span>
+        <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># delete the last element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns the value from the top of the stack</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">value</span>
+          <span class="k">return</span> <span class="n">val</span>
+
+        <span class="n">curr_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span>
+        <span class="c1"># loop to find the 2nd last element in the stack and put it in curr_node</span>
+        <span class="k">while</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span><span class="o">.</span><span class="n">next_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">curr_node</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span>
+
+        <span class="n">val</span> <span class="o">=</span> <span class="n">curr_node</span><span class="o">.</span><span class="n">next_ptr</span><span class="o">.</span><span class="n">value</span> <span class="c1"># val = last element in the stack</span>
+        <span class="k">return</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        True if the stack is empty. False otherwise.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div>
+<h2 id="23-problem-valid-brackets">2.3 Problem : Valid Brackets</h2>
+<p>Write a program to check if a series of brackets are valid. 
+Ex. 
+1. [()()] is valid
+2. [} is invalid
+3. [(] is invalid</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the brackets: &quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">isValidBrackets</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span> <span class="ow">or</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span> <span class="ow">or</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span> <span class="c1"># correct opening bracket for this closing bracket</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span> <span class="c1"># correct opening bracket for this closing bracket</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;}&#39;</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span><span class="p">:</span> <span class="c1"># correct opening bracket for this closing bracket</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">stack</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span> <span class="c1"># no remaining open brackets should be left in the stack</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">if</span> <span class="n">isValidBrackets</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valid brackets.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid brackets.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h1 id="3-leetcode">3. Leetcode</h1>
+<h2 id="31-introduction-to-leetcode">3.1 Introduction to Leetcode</h2>
+<p><a href="https://leetcode.com/">Leetcode</a> is currently the largest online platform where you can learn and practice coding interview style questions. These types of questions are largely based on data structures and algorithms and are also commonly seen in competitive programming contests.</p>
+<h2 id="32-your-first-problem">3.2 Your First Problem</h2>
+<p>Let us try leetcode out with the above stack problem. <a href="https://leetcode.com/problems/valid-parentheses/">Valid Parentheses</a> is an easy leetcode problem. Try pasting your solution to the problem from the code above and see the results! Keep in mind that as this code is not optimized, the execution speed will not be competitive. Try re-writing the code using native python lists to improve performance.</p>
+<h2 id="33-asteroid-collision">3.3 Asteroid Collision</h2>
+<p>We are given an array <code>asteroids</code> of integers representing asteroids in a row.</p>
+<p>For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.</p>
+<p>Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> asteroids = [5,10,-5]
+<strong>Output:</strong> [5,10]
+<strong>Explanation:</strong> The 10 and -5 collide resulting in 10. The 5 and 10 never collide.</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> asteroids = [8,-8]
+<strong>Output:</strong> []
+<strong>Explanation:</strong> The 8 and -8 collide exploding each other.</p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> asteroids = [10,2,-5]
+<strong>Output:</strong> [10]
+<strong>Explanation:</strong> The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>2 &lt;= asteroids.length &lt;= 104</code></li>
+<li><code>-1000 &lt;= asteroids[i] &lt;= 1000</code></li>
+<li><code>asteroids[i] != 0</code></li>
+</ul>
+<p><strong>Explaination:</strong></p>
+<p>Collision will only take place when the upcoming asteroid will be moving toward left and the prev asteroid is moving toward right otherwise collsion will not take place because they will not meet.</p>
+<p><img title="" src="./Asteroid collision possibilities.png" alt="" data-align="center" width="292"></p>
+<p>Hence we need to first check the condition wheter they are colliding or not. If the collision happens, then:</p>
+<p>a) If the current asteroid is smaller than the one we saw earlier, it will explode, and the collision chain will stop there. </p>
+<p>b) if the current asteroid bigger, it will keep moving toward the left and might collide further with other asteroids we saw earlier that are moving toward the right. </p>
+<p>c) If the current asteroid is the same size as the one we saw earlier, both of them will explode and the collision chain will stop sinct the current stone is destroyed</p>
+<p>Hence, the observation here is that each stone might keep colliding with asteroids on its left until it collides with a bigger asteroid or an asteroid of same size and explodes.</p>
+<p>This requirement could be fulfilled by the <strong>stack data structure</strong><em>; if we keep asteroids in the stack, then for each asteroid, </em><em>the collision chain can be executed by checking the top of the stack and popping if an asteroid should be destroyed.</em>*</p>
+<p>The link for this question can be found <a href="https://leetcode.com/problems/asteroid-collision/">here</a>.</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">collision_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">asteroidCollision</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asteroids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">final_asteroid</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">asteroids</span><span class="p">:</span>
+            <span class="n">asteroid_destroyed</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">final_asteroid</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">collision_check</span><span class="p">(</span><span class="n">final_asteroid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">):</span>
+                <span class="n">final_asteroid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">final_asteroid</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">collision_check</span><span class="p">(</span><span class="n">final_asteroid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">final_asteroid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">final_asteroid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+                        <span class="n">asteroid_destroyed</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">final_asteroid</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                        <span class="k">break</span>
+                    <span class="n">final_asteroid</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">asteroid_destroyed</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">final_asteroid</span> <span class="ow">or</span> <span class="p">(</span><span class="n">final_asteroid</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">collision_check</span><span class="p">(</span><span class="n">final_asteroid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">))):</span>
+                    <span class="n">final_asteroid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">final_asteroid</span>
+</code></pre></div>
+<h1 id="4-queues">4. Queues</h1>
+<h2 id="41-what-are-queues">4.1 What are Queues</h2>
+<p>A queue is a linear data structure in which insertions are done at one end (rear) and deletions are done at the other end (front). The first element to be inserted is the first one to be deleted. Hence, it's called as a First In First Out (FIFO) list.</p>
+<p>A Queue is like a line waiting to purchase tickets, where the first person in line is the first person served. (i.e. First come first serve).</p>
+<p><img alt="" src=".\Queue.png" /></p>
+<p>The queue has two pointers, <strong>Front</strong> and <strong>Rear</strong>. The front points towards the first element while the rear points towards the last element of the queue.</p>
+<h2 id="42-queue-operations">4.2 Queue Operations</h2>
+<ol>
+<li>
+<p><code>enQueue(int data)</code> :Inserts and element at the end of the queue. This operation adds a new node after the rear and moves the <em>rear pointer</em> to the new node added.</p>
+</li>
+<li>
+<p><code>deQueue()</code>: Removes and returns the elemnt at the front of the queue.This operation removes the front node and moves the <em>front pointer</em> to the next node.</p>
+</li>
+<li>
+<p><code>isEmpty()</code>: Indicates whether no elements are stored.</p>
+</li>
+<li>
+<p><code>front()</code>: Returns the element at the front withput removing it from the queue.</p>
+</li>
+<li>
+<p><code>QueueSize()</code>: Returns the number of elements stored in the queue.</p>
+</li>
+</ol>
+<h2 id="43-implementation-of-queue-using-linked-list-python-3x">4.3 Implementation of Queue using Linked List (Python 3.x)</h2>
+<p>First we'll define a class <code>Node</code> - A linked list node to store queue entry</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p><img title="" src="./Node.png" alt="" data-align="center" width="202"></p>
+<p>Then we define a class <code>Queue</code>. Its constructor will have 2 pointer: <strong>Front and Rear</strong>. Initially, since the queue is empty, Both of them point at <code>None</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Queue</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">front</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rear</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p><img title="" src="./Empty Linked List- queue implementation (2).png" alt="" width="207" data-align="center"></p>
+<p><strong>Defining EnQueue(item)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">EnQueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rear</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">front</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rear</span> <span class="o">=</span> <span class="n">temp</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rear</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rear</span> <span class="o">=</span> <span class="n">temp</span>
+</code></pre></div>
+<p>Case (a): When the Queue is initially empty</p>
+<p><img title="" src="./Case(1)-first entry.png" alt="" data-align="left" width="222"></p>
+<p>Case (b): When the Queue has some elements</p>
+<p><img src="./enqueue.png" title="" alt="" data-align="right"></p>
+<p><strong>Defining DeQueue():</strong></p>
+<div class="highlight"><pre><span></span><code>  <span class="k">def</span> <span class="nf">DeQueue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">return</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">front</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">front</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">front</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rear</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p><img alt="" src="dequeue.png" /></p>
+<p><strong>Defining isEmpty ():</strong></p>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">front</span> <span class="o">==</span> <span class="kc">None</span>
+</code></pre></div>
+<p><strong>Defining front():</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">front</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">front</span>
+</code></pre></div>
+<h2 id="44-leetcode-question-flatten-nested-list-iterator">4.4 Leetcode Question: Flatten Nested List Iterator</h2>
+<p><strong>Description:</strong> You are given a nested list of integers <code>nestedList</code>. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it. You can find the leetcode question <a href="https://leetcode.com/problems/flatten-nested-list-iterator/">here</a>.</p>
+<p>Implement the <code>NestedIterator</code> class:</p>
+<ul>
+<li><code>NestedIterator(List&lt;NestedInteger&gt; nestedList)</code> Initializes the iterator with the nested list <code>nestedList</code>.</li>
+<li><code>int next()</code> Returns the next integer in the nested list.</li>
+<li><code>boolean hasNext()</code> Returns <code>true</code> if there are still some integers in the nested list and <code>false</code> otherwise.</li>
+</ul>
+<p>Your code will be tested with the following pseudocode:</p>
+<div class="highlight"><pre><span></span><code>initialize iterator with nestedList
+res = []
+while iterator.hasNext()
+ append iterator.next() to the end of res
+return res
+</code></pre></div>
+<p>If <code>res</code> matches the expected flattened list, then your code will be judged as correct.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> nestedList = [[1,1],2,[1,1]]
+<strong>Output:</strong> [1,1,2,1,1]
+<strong>Explanation:</strong> By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> nestedList = [1,[4,[6]]]
+<strong>Output:</strong> [1,4,6]
+<strong>Explanation:</strong> By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= nestedList.length &lt;= 500</code></li>
+<li>The values of the integers in the nested list is in the range <code>[-106, 106]</code>.</li>
+</ul>
+<p><strong>Assumptions:</strong></p>
+<p>The question has already defines a <strong>NestedInteger</strong> class with the functions <code>isInteger()</code> , <code>getInteger()</code> and <code>getList()</code>.</p>
+<p>We have to implement the <strong>NestedIterator</strong> class.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This is the interface that allows for creating nested lists.</span>
+<span class="c1"># You should not implement it, or speculate about its implementation</span>
+<span class="c1"># class NestedInteger(object):</span>
+<span class="c1">#    def isInteger(self):</span>
+<span class="c1">#        @return True if this NestedInteger holds a single integer, rather than a nested list.</span>
+<span class="c1">#        :rtype bool</span>
+<span class="c1">#    def getInteger(self):</span>
+<span class="c1">#        @return the single integer that this NestedInteger holds, if it holds a single integer</span>
+<span class="c1">#        Return None if this NestedInteger holds a nested list</span>
+<span class="c1">#        :rtype int</span>
+<span class="c1">#    def getList(self):</span>
+<span class="c1">#       return the nested list that this NestedInteger holds, if it holds a nested list</span>
+<span class="c1">#        Return None if this NestedInteger holds a single integer</span>
+<span class="c1">#        :rtype List[NestedInteger]</span>
+
+<span class="k">class</span> <span class="nc">NestedIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nestedList</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize your data structure here.</span>
+<span class="sd">        :type nestedList: List[NestedInteger]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">hasNext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+<span class="c1"># Your NestedIterator object will be instantiated and called as such:</span>
+<span class="c1"># i, v = NestedIterator(nestedList), []</span>
+<span class="c1"># while i.hasNext(): v.append(i.next())</span>
+</code></pre></div>
+<p><strong>Solution:</strong></p>
+<p><em>Basically, if you find an integer, add it to the queue or else if you find a nested list, use the function recursively to search for integers in that particular nested list and hence add it to the final queue.</em></p>
+<p><strong>Code:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">queue</span>
+<span class="k">class</span> <span class="nc">NestedIterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nestedList</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flattenedList</span><span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">nestedList</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span> <span class="n">nestedList</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nestedList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isInteger</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">flattenedList</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">getInteger</span><span class="p">())</span> 
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">getList</span><span class="p">())</span>   
+
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">flattenedList</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">hasNext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flattenedList</span><span class="o">.</span><span class="n">empty</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>

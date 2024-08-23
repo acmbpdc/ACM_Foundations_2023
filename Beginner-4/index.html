@@ -1,0 +1,1150 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Beginner-3/">
+      
+      
+        <link rel="next" href="../Advanced-1/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>C Programming Foundations-4 - ACM Foundations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pointers-in-c-a-guide-to-mastering-the-art" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ACM Foundations" class="md-header__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACM Foundations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C Programming Foundations-4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Beginner-1/" class="md-tabs__link">
+          
+  
+  Beginner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Advanced-1/" class="md-tabs__link">
+          
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ACM Foundations" class="md-nav__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    ACM Foundations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-on-earth-is-a-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      What on Earth is a Pointer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-and-initializing-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaring and Initializing Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dereferencing-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dereferencing Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointer-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer Arithmetic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-and-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays and Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointers-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointers and Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls and Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists, Stacks and Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Sets and Hash Maps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-on-earth-is-a-pointer" class="md-nav__link">
+    <span class="md-ellipsis">
+      What on Earth is a Pointer?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-and-initializing-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaring and Initializing Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dereferencing-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dereferencing Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointer-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointer Arithmetic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-and-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays and Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointers-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointers and Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls and Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pointers-in-c-a-guide-to-mastering-the-art">Pointers in C: A Guide to Mastering the Art</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Welcome to the fascinating world of pointers in C, where memory addresses become your dance partners and dereferencing becomes your second language. Pointers are like powerful tools that can unlock the secrets of memory management and dynamic data structures, but they can also be a source of confusion and frustration if not handled with care.</p>
+<p>In this session, we'll embark on a debugging adventure. We'll explore the concepts of memory addresses, dereferencing, pointer arithmetic &amp; functions, and debugging, all while injecting a dose of humor to keep things engaging.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#what-on-earth-is-a-pointer">What on Earth is a Pointer?</a></li>
+<li><a href="#declaring-and-initializing-pointers">Declaring and Initializing Pointers</a></li>
+<li><a href="#dereferencing-pointers">Dereferencing Pointers</a></li>
+<li><a href="#pointer-arithmetic">Pointer Arithmetic</a></li>
+<li><a href="#arrays-and-pointers">Arrays and Pointers</a></li>
+<li><a href="#pointers-and-functions">Pointers and Functions</a></li>
+<li><a href="#common-pitfalls-and-challenges">Common Pitfalls and Challenges</a></li>
+<li><a href="#question">Question</a></li>
+<li><a href="#deadly-debugging">Deadly Debugging</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h2 id="what-on-earth-is-a-pointer">What on Earth is a Pointer?</h2>
+<p>A pointer is a variable that stores the memory address of another variable. A pointer variable allows your code to find the location of another variable in memory.</p>
+<blockquote>
+<p><em>In C, a pointer is like a GPS for your program, allowing you to navigate through the vast landscape of memory.</em></p>
+</blockquote>
+<p><strong>Syntax to declare a pointer:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">dataType</span><span class="w"> </span><span class="o">*</span><span class="n">pointerName</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="declaring-and-initializing-pointers">Declaring and Initializing Pointers</h2>
+<p>Declaring a pointer is as simple as putting an asterisk (*) before the variable name. </p>
+<blockquote>
+<p><em>Declaring a pointer is like reserving a space for an address label.</em></p>
+</blockquote>
+<p>Initializing it involves assigning the memory address of another variable.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pNum</span><span class="p">;</span><span class="w">       </span><span class="c1">// Declaration</span>
+<span class="n">pNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num</span><span class="p">;</span><span class="w">     </span><span class="c1">// Initialization (pNum now points to the memory address of num)</span>
+</code></pre></div></p>
+<p><strong>Question 1:</strong> What happens if you try to initialize a pointer without declaring it first?</p>
+<p><em>Hint: The compiler might not appreciate surprises!</em></p>
+<p><strong>Question 2:</strong> What's wrong with this pointer code? </p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
+<details><summary>Answer </summary>
+<p>
+
+p is uninitialized and points to a random memory location. Dereferencing p can crash the program.
+
+</p>
+</details>
+
+<h2 id="dereferencing-pointers">Dereferencing Pointers</h2>
+<p>To access the actual value stored in the memory location being pointed to, you need to <em>dereference</em> the pointer using the <code>*</code> operator. </p>
+<blockquote>
+<p><em>It's like following a treasure map to find the hidden treasure!</em></p>
+</blockquote>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pNum</span><span class="p">;</span><span class="w"> </span><span class="c1">// value now holds the content of the memory location pointed by pNum</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;num is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w"> </span><span class="c1">// prints 42</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;*pNUm is: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// prints 42</span>
+</code></pre></div></p>
+<p><strong>Question 3:</strong> What would happen if you dereference a pointer that hasn't been initialized?</p>
+<p><em>Hint: The treasure map is blank!</em></p>
+<h2 id="pointer-arithmetic">Pointer Arithmetic</h2>
+<p>Pointers can be used to access elements of an array. This is done by adding an integer to the pointer, which moves the pointer forward by the size of the data type.</p>
+<blockquote>
+<p><em>Pointer arithmetic is like navigating through a maze of memory addresses.</em></p>
+</blockquote>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">;</span>
+
+<span class="c1">// Accessing elements using pointer arithmetic</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">thirdElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">pArr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// This gets the third element (index 2) of the array</span>
+</code></pre></div></p>
+<p><strong>Question 4:</strong> Explain the difference between <code>*(pArr + 2)</code> and <code>pArr[2]</code>.</p>
+<p><em>Hint: It's like choosing between a labyrinth and a shortcut!</em></p>
+<p><strong>Question 5:</strong> What is output of this program?</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+
+<span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>6 6  </li>
+<li>5 5</li>
+<li>6 5</li>
+<li>5 6</li>
+</ul>
+<details><summary>Answer</summary>
+<p> 
+
+The output is 6 6. 
+
+* `p` points to x 
+* `(*p)++` dereferences p and increments x to 6
+* So x is now 6, and *p is 6 as well since p points to x
+
+</p>
+</details>
+
+<h2 id="arrays-and-pointers">Arrays and Pointers</h2>
+<p>In C, arrays and pointers share a mysterious connection. An array name is essentially a pointer to its first element.</p>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">numbers</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">;</span>
+
+<span class="c1">// Both expressions are equivalent</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">firstElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">alsoFirstElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pNumbers</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>Question 6:</strong> Can you explain why <code>sizeof(numbers)</code> is different from <code>sizeof(pNumbers)</code>?</p>
+<p><em>Hint: It's a matter of perspective!</em></p>
+<h2 id="pointers-and-functions">Pointers and Functions</h2>
+<p>Pointers can be passed to functions, allowing them to modify values outside their scope. This is efficient compared to copying large amounts of data.</p>
+<blockquote>
+<p><em>It's like sending a scout to explore unknown territories.</em></p>
+</blockquote>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">doubleValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">doubleValue</span><span class="p">(</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"> </span><span class="c1">// num is now 10</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="common-pitfalls-and-challenges">Common Pitfalls and Challenges</h2>
+<ol>
+<li>
+<p><strong>Dangling Pointers:</strong> Be cautious not to keep a pointer pointing to a memory location that has been deallocated.</p>
+</li>
+<li>
+<p><strong>Memory Leaks:</strong> Always free the memory you allocate dynamically. Zombies belong in movies, not in your code!</p>
+</li>
+<li>
+<p><strong>Wild Pointers:</strong> Initialize your pointers before using them; otherwise, you might be pointing to who-knows-where.</p>
+</li>
+<li>
+<p><strong>Array Boundaries:</strong> Be mindful of going beyond the boundaries of arrays. Memory is a delicate ecosystem!</p>
+</li>
+<li>
+<p><strong>Pointer Arithmetic:</strong> Be careful when using pointer arithmetic. It's easy to get lost in the maze of memory addresses.</p>
+</li>
+</ol>
+<h2 id="question">Question</h2>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">pc</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+
+<span class="w">   </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of c: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of c: %d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w">  </span><span class="c1">// 22</span>
+
+<span class="w">   </span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of pointer pc: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pc</span><span class="p">);</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Content of pointer pc: %d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="p">);</span><span class="w"> </span><span class="c1">// 22</span>
+
+<span class="w">   </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of pointer pc: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pc</span><span class="p">);</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Content of pointer pc: %d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pc</span><span class="p">);</span><span class="w"> </span><span class="c1">// 11</span>
+
+<span class="w">   </span><span class="o">*</span><span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Address of c: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Value of c: %d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Output</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="mi">2686784</span>
+<span class="n">Value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="mi">22</span>
+
+<span class="n">Address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">pc</span><span class="o">:</span><span class="w"> </span><span class="mi">2686784</span>
+<span class="n">Content</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">pc</span><span class="o">:</span><span class="w"> </span><span class="mi">22</span>
+
+<span class="n">Address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">pc</span><span class="o">:</span><span class="w"> </span><span class="mi">2686784</span>
+<span class="n">Content</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">pc</span><span class="o">:</span><span class="w"> </span><span class="mi">11</span>
+
+<span class="n">Address</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="mi">2686784</span>
+<span class="n">Value</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span>
+</code></pre></div>
+<h1 id="deadly-debugging">Deadly Debugging</h1>
+<p>Debugging, the art of hunting down and eliminating bugs in your code, is an essential skill for any programmer. It's like being a detective, meticulously examining the clues left behind by your code to uncover the culprit behind its misbehavior. In the world of C programming, debugging can be a daunting task, but with the right approach, it can be a rewarding experience.</p>
+<p>Your primary weapon in this debugging crusade is your compiler. The compiler scrutinizes your code, flagging any syntactical errors or inconsistencies that might be causing problems (Just like your mom over your shoulder in 2nd grade :) )</p>
+<p>As you delve into the debugging process, there are a few key strategies to keep in mind:</p>
+<ol>
+<li>
+<p><strong>Reproduce the Bug:</strong> Before you can fix it, you need to be able to consistently reproduce the bug. This might involve running your program multiple times with different inputs or setting up specific conditions to trigger the error. This can help you find out if there is a particular test case showing the error or all of them not working at all :(.</p>
+</li>
+<li>
+<p><strong>Identify Symptoms:</strong> Carefully observe the symptoms of the bug. Is your program crashing unexpectedly? Is it producing incorrect output? Analyzing the symptoms can provide valuable clues about the underlying cause.</p>
+</li>
+<li>
+<p><strong>Simplify the Problem:</strong> Break down the problem into smaller, more manageable pieces. This can involve isolating specific sections of code, removing extraneous elements, or temporarily disabling certain features to pinpoint the source of the bug.</p>
+</li>
+<li>
+<p><strong>Use Debugging Tools:</strong> Employ your compiler and debugger to their fullest potential. Set breakpoints, print statements, inspect variables, and step through your code to identify where the program's behavior deviates from expectations.</p>
+</li>
+<li>
+<p><strong>Seek Help:</strong> Don't hesitate to seek help from fellow programmers, online forums, or documentation. A fresh perspective can often lead to the breakthrough you need. (Sleeping and praying to god helps too (Tried and Tested, trust us :) ) ).</p>
+</li>
+</ol>
+<p>Here is an example of a simple C program with a bug and a step-by-step process of debugging it:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This program is supposed to calculate the sum of the numbers from 0 to 10. However, there is a bug in the program that is causing it to print an incorrect value.</p>
+<p><strong>Step 1: Compile the program</strong></p>
+<p>The first step is to compile and run the program to view the output. In an average programmer's life, <em>logical errors</em> are their worst enemy. These errors disguise themselves within the program because they don't throw up a <em>syntax error</em>.</p>
+<p>The above print the following output:</p>
+<div class="highlight"><pre><span></span><code>The sum is: 0
+</code></pre></div>
+<p>The program is clearly not printing the correct sum, which should be 55.</p>
+<p><strong>Step 3: Use a print statements</strong></p>
+<p>Print statements are underestimated friends of ours. Carefully placing a print statement can show us the flow of the program and help us understand where we are going wrong</p>
+<p>The program becomes something as follows</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The running sum is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum is: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>You will find that, the value of the <code>sum</code> variable is 0 at all points in the program.</p>
+<p><strong>Step 8: Find the bug</strong></p>
+<p>By stepping through the program, you will eventually find the bug. In this case, the bug is that the condition of the the sum increment is incorrect. The condition should be <code>sum+=i</code>, not <code>sum*=i</code>.</p>
+<p><strong>Step 9: Fix the bug</strong></p>
+<p>Edit the program to fix the bug. Save the changes and then recompile the program.</p>
+<p><strong>Step 10: Run the program again</strong></p>
+<p>Run the program again to make sure that the bug has been fixed. The program should now print the correct sum, which is 55.</p>
+<p>This is just a simple example of debugging a C program. The debugging process can be more complex for larger and more complex programs. However, the steps involved are essentially the same: identify the problem, reproduce the problem, isolate the problem, and fix the problem.</p>
+<p>We can also use various debuggers such as gdb (a popular one) that help us find out the error.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, mastering debugging and understanding pointers in C is essential for writing robust and efficient code. Debugging is not just about fixing errors; it's a proactive process that enhances code quality. Pointers, while powerful, require careful handling to prevent runtime errors. This documentation has provided insights into debugging techniques and practical exercises with intentional bugs. Embrace debugging as a crucial part of development, and use pointers judiciously to write reliable C code. Happy coding!</p>
+<p><img alt="enter image description here" src="https://uploads-ssl.webflow.com/5f3c19f18169b62a0d0bf387/60d33be7eedf8e1f31aabcec_BwENfmI0CU5dZGYlSyo142mpfG08-rYgTS-Qm47uMUXN6JXtmdZvtzVzTooUQdXTWmTD8uzF9N6XQJA2vUIMi53tunFyVtvOBJTNfOjHit2P_JkTmFzFsK7ep6Vb9781XZnRAryH.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>

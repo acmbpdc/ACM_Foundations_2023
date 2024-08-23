@@ -1,0 +1,2038 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Beginner-4/">
+      
+      
+        <link rel="next" href="../Advanced-2/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Graph Theory - ACM Foundations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-theory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ACM Foundations" class="md-header__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACM Foundations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Theory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Beginner-1/" class="md-tabs__link">
+          
+  
+  Beginner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ACM Foundations" class="md-nav__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    ACM Foundations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Theory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of “graphs”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of “graphs”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undirected-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undirected graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directed-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighted-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weighted graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-definition-of-graph-and-terminologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Definition of “graph” and Terminologies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representations-of-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representations of Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Representations of Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency Matrix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-undirected-graph-to-adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Undirected Graph to Adjacency Matrix:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-directed-graph-to-adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Directed Graph to Adjacency Matrix:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-undirected-graph-to-adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Undirected Graph to Adjacency list:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-directed-graph-to-adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Directed Graph to Adjacency list:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      BFS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-shortest-path-to-food" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question : Shortest path to food
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-keys-and-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Keys and Rooms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-spanning-tree-prims-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Spanning Tree (Prim's Algorithm):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-optimized-water-distribution-in-a-village" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Optimized water distribution in a village
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's algorithm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-network-delay-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question : Network Delay Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-graph-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extra Graph Algorithms:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Graph Algorithms:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union-Find:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-spanning-tree-union-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Spanning Tree (Union Find):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topological-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological sort:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bellman Ford:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floyd-warshall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floyd Warshall:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eulearian-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eulearian Path:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists, Stacks and Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hash Sets and Hash Maps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#graph-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph Theory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of “graphs”
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of “graphs”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undirected-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undirected graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directed-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directed graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighted-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weighted graphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-definition-of-graph-and-terminologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Definition of “graph” and Terminologies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#representations-of-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representations of Graph
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Representations of Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency Matrix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-undirected-graph-to-adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Undirected Graph to Adjacency Matrix:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-directed-graph-to-adjacency-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Directed Graph to Adjacency Matrix:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-undirected-graph-to-adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Undirected Graph to Adjacency list:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-directed-graph-to-adjacency-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Directed Graph to Adjacency list:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      BFS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-shortest-path-to-food" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question : Shortest path to food
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      DFS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-keys-and-rooms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Keys and Rooms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-spanning-tree-prims-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Spanning Tree (Prim's Algorithm):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-optimized-water-distribution-in-a-village" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Optimized water distribution in a village
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstras-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dijkstra's algorithm:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-network-delay-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question : Network Delay Time
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-graph-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extra Graph Algorithms:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Graph Algorithms:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      Union-Find:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-spanning-tree-union-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Spanning Tree (Union Find):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topological-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topological sort:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bellman Ford:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floyd-warshall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floyd Warshall:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eulearian-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eulearian Path:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Graph Theory</h1>
+
+<h2 id="graph-theory">Graph Theory</h2>
+<p><code>Graph</code>  is probably the data structure that has the closest resemblance to our daily life. There are many types of graphs describing the relationships in real life. For instance, our friend circle is a huge “graph”.</p>
+<p><img alt="" src="https://assets.leetcode.com/static_assets/explore/The_basic_of_graph_1.png" /></p>
+<p>Figure 1. An example of a undirected graph.</p>
+<p>In Figure 1 above, we can see that person G, B, and E are all direct friends of A, while person C, D, and F are indirect friends of A. This example is a social graph of friendship. So, what is the “graph” data structure?</p>
+<h2 id="types-of-graphs">Types of “graphs”</h2>
+<p>There are many types of “graphs”. In this Explore Card, we will introduce three types of graphs:  <strong>undirected graphs, directed graphs, and weighted graphs.</strong></p>
+<h3 id="undirected-graphs">Undirected graphs</h3>
+<p>The edges between any two vertices in an “undirected graph” do not have a direction, indicating a two-way relationship.</p>
+<p>Figure 1 is an example of an undirected graph.</p>
+<h3 id="directed-graphs">Directed graphs</h3>
+<p>The edges between any two vertices in a “directed graph” graph are directional.</p>
+<p>Figure 2 is an example of a directed graph.</p>
+<p><img alt="" src="https://assets.leetcode.com/static_assets/explore/The_basic_of_graph_2.png" /></p>
+<p>Figure 2. An example of a directed graph.</p>
+<h3 id="weighted-graphs">Weighted graphs</h3>
+<p>Each edge in a “weighted graph” has an associated weight. The weight can be of any metric, such as time, distance, size, etc. The most commonly seen “weighted map” in our daily life might be a city map. In Figure 3, each edge is marked with the distance, which can be regarded as the weight of that edge.</p>
+<p><img alt="" src="https://assets.leetcode.com/static_assets/explore/The_basic_of_graph_3.png" /></p>
+<p>Figure 3. An example of a weighted graph.</p>
+<h2 id="the-definition-of-graph-and-terminologies">The Definition of “graph” and Terminologies</h2>
+<p>“Graph” is a non-linear data structure consisting of vertices and edges. There are a lot of terminologies to describe a graph. If you encounter an unfamiliar term in the following Explore Card, you may look up the definition below.</p>
+<ul>
+<li>Vertex: In Figure 1, nodes such as A, B, and C are called vertices of the graph.</li>
+<li>Edge: The connection between two vertices are the edges of the graph. In Figure 1, the connection between person A and B is an edge of the graph.</li>
+<li>
+<p>Path: the sequence of vertices to go through from one vertex to another. In Figure 1, a path from A to C is [A, B, C], or [A, G, B, C], or [A, E, F, D, B, C].</p>
+<p><strong>Note</strong>: there can be multiple paths between two vertices.</p>
+</li>
+<li>
+<p>Path Length: the number of edges in a path. In Figure 1, the path lengths from person A to C are 2, 3, and 5, respectively.</p>
+</li>
+<li>Cycle: a path where the starting point and endpoint are the same vertex. In Figure 1, [A, B, D, F, E] forms a cycle. Similarly, [A, G, B] forms another cycle.</li>
+<li>Negative Weight Cycle: In a “weighted graph”, if the sum of the weights of all edges of a cycle is a negative value, it is a negative weight cycle. In Figure 4, the sum of weights is -3.</li>
+<li>Connectivity: if there exists at least one path between two vertices, these two vertices are connected. In Figure 1, A and C are connected because there is at least one path connecting them.</li>
+<li>Degree of a Vertex: the term “degree” applies to unweighted graphs. The degree of a vertex is the number of edges connecting the vertex. In Figure 1, the degree of vertex A is 3 because three edges are connecting it.</li>
+<li>In-Degree: “in-degree” is a concept in directed graphs. If the in-degree of a vertex is d, there are d directional edges incident to the vertex. In Figure 2, A’s indegree is 1, i.e., the edge from F to A.</li>
+<li>Out-Degree: “out-degree” is a concept in directed graphs. If the out-degree of a vertex is d, there are d edges incident from the vertex. In Figure 2, A’s outdegree is 3, i,e, the edges A to B, A to C, and A to G.</li>
+</ul>
+<p><img alt="" src="https://assets.leetcode.com/static_assets/explore/4._Negative_Cycle.png" /></p>
+<p>Figure 4. An example of a negative weight cycle.</p>
+<h2 id="representations-of-graph">Representations of Graph</h2>
+<p>Here are the two most common ways to represent a graph :</p>
+<ol>
+<li>Adjacency Matrix</li>
+<li>Adjacency List</li>
+</ol>
+<h3 id="adjacency-matrix">Adjacency Matrix</h3>
+<p>An adjacency matrix is a way of representing a graph as a matrix of boolean (0’s and 1’s).</p>
+<p>Let’s assume there are <strong><em>*n</em></strong><em> vertices in the graph So, create a 2D matrix </em><strong><em>adjMat[n][n]</em></strong>* having dimension n x n.</p>
+<blockquote>
+<ul>
+<li>If there is an edge from vertex <strong><em>*i</em></strong><em> to </em><strong><em>j</em></strong><em>, mark </em><strong><em>adjMat[i][j]</em></strong><em> as </em><strong><em>1</em></strong>*.</li>
+<li>If there is no edge from vertex <strong><em>*i</em></strong><em> to </em><strong><em>j</em></strong><em>, mark </em><strong><em>adjMat[i][j]</em></strong><em> as </em><strong><em>0</em></strong>*.</li>
+</ul>
+</blockquote>
+<h3 id="representation-of-undirected-graph-to-adjacency-matrix">Representation of Undirected Graph to Adjacency Matrix:</h3>
+<p>The below figure shows an undirected graph. Initially, the entire Matrix is ​​initialized to <strong><em>*0</em></strong><em>. If there is an edge from source to destination, we insert </em><strong><em>1</em></strong><em> to both cases (</em><strong><em>adjMat[destination]</em></strong><em> and </em><strong><em>adjMat</em></strong><em>[</em><strong><em>destination])</em></strong>* because we can go either way.</p>
+<p><img alt="Undirected_to_Adjacency_matrix" src="https://media.geeksforgeeks.org/wp-content/uploads/20230727130331/Undirected_to_Adjacency_matrix.png" /></p>
+<h3 id="representation-of-directed-graph-to-adjacency-matrix">Representation of Directed Graph to Adjacency Matrix:</h3>
+<p>The below figure shows a directed graph. Initially, the entire Matrix is ​​initialized to <strong><em>*0</em></strong><em>. If there is an edge from source to destination, we insert </em><strong><em>1</em></strong><em> for that particular </em><strong><em>adjMat[destination]</em></strong>*.</p>
+<p><img alt="Directed_to_Adjacency_matrix" src="https://media.geeksforgeeks.org/wp-content/uploads/20230727130528/Directed_to_Adjacency_matrix.png" /></p>
+<h3 id="adjacency-list">Adjacency List</h3>
+<p>An array of Lists is used to store edges between two vertices. The size of array is equal to the number of <strong><em>*vertices (i.e, n)</em></strong><em>. Each index in this array represents a specific vertex in the graph. The entry at the index i of the array contains a linked list containing the vertices that are adjacent to vertex </em><strong><em>i</em></strong>*.</p>
+<p>Let’s assume there are <strong><em>*n</em></strong><em> vertices in the graph So, create an </em><strong><em>array of list</em></strong><em> of size </em><strong><em>n</em></strong><em> as </em><strong><em>adjList[n].</em></strong>*</p>
+<blockquote>
+<ul>
+<li>adjList[0] will have all the nodes which are connected (neighbour) to vertex <strong><em>*0</em></strong>*.</li>
+<li>adjList[1] will have all the nodes which are connected (neighbour) to vertex <strong><em>*1</em></strong>* and so on.</li>
+</ul>
+</blockquote>
+<h3 id="representation-of-undirected-graph-to-adjacency-list">Representation of Undirected Graph to Adjacency list:</h3>
+<p>The below undirected graph has 3 vertices. So, an array of list will be created of size 3, where each indices represent the vertices. Now, vertex 0 has two neighbours (i.e, 1 and 2). So, insert vertex 1 and 2 at indices 0 of array. Similarly, For vertex 1, it has two neighbour (i.e, 2 and 1) So, insert vertices 2 and 1 at indices 1 of array. Similarly, for vertex 2, insert its neighbours in array of list.</p>
+<p><img alt="Graph-Representation-of-Undirected-graph-to-Adjacency-List" src="https://media.geeksforgeeks.org/wp-content/uploads/20230727154843/Graph-Representation-of-Undirected-graph-to-Adjacency-List.png" /></p>
+<h3 id="representation-of-directed-graph-to-adjacency-list">Representation of Directed Graph to Adjacency list:</h3>
+<p>The below directed graph has 3 vertices. So, an array of list will be created of size 3, where each indices represent the vertices. Now, vertex 0 has no neighbours. For vertex 1, it has two neighbour (i.e, 0 and 2) So, insert vertices 0 and 2 at indices 1 of array. Similarly, for vertex 2, insert its neighbours in array of list.</p>
+<p><img alt="Graph-Representation-of-Directed-graph-to-Adjacency-List" src="https://media.geeksforgeeks.org/wp-content/uploads/20230727155209/Graph-Representation-of-Directed-graph-to-Adjacency-List.png" /></p>
+<h2 id="common-algorithms">Common algorithms</h2>
+<h3 id="bfs">BFS:</h3>
+<p>Breadth-first search (BFS) is an algorithm for searching a tree data structure for a node that satisfies a given property. It starts at the tree root and explores all nodes at the present depth prior to moving on to the nodes at the next depth level. Extra memory, usually a queue, is needed to keep track of the child nodes that were encountered but not yet explored.  </p>
+<p>BFS is actually traversing the nodes level by level. That is, traversing the node first, then its children and then its children’s children. If you consider the following tree,</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/6213c7b8-9f06-48f6-bb50-d10b37070957_1613720241.0043335.png" /></p>
+<p>The root node is A. Its left and right children are  <strong>B</strong>  and  <strong>C</strong>. Further its children are  <strong>D,E,F</strong>  and  <strong>G</strong>. So the  <strong>BFS</strong>  of the above tree is</p>
+<div class="highlight"><pre><span></span><code>          ABCDEFG
+</code></pre></div>
+<p>Here  <strong>Level Order traversal</strong>  of a tree is going to be same as  <strong>BFS</strong>  since it traverse starting from level 0 till its last level. But not every BFS is level order traversal. For example,</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/cd2e1cde-2d41-4a9d-b42e-e91d27bbee6c_1613720439.3248208.png" /></p>
+<p>Here the  <strong>BFS</strong>  traverse its left and right children first and then its children.</p>
+<p>So the BFS traversal of the above tree is  <strong>12345</strong>. Whereas Level Order traverse level by level. So the level order traversal of the same tree is  <strong>13245</strong>.</p>
+<p>Traversing the graph in BFS way is again going to be same. That visiting the nodes wider as the graph goes.<br />
+Consider the following graph,</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/e40b66e6-ba34-4d17-8bf6-d36bff715b45_1613720607.019259.png" /></p>
+<p>Let’s traverse starting from Node  <strong>0</strong>, we first visit  <strong>0</strong>  and traversing its neighbouring nodes  <strong>1</strong>  and  <strong>2</strong>.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/c94c8e8b-99b9-4a38-9a3c-034ee79e940f_1613720659.8195944.png" /></p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/ff400e98-7fed-48c4-99a1-3cab5375d137_1613720696.1264007.png" /></p>
+<p>Further traversing the next wider level  <strong>2</strong>  and  <strong>5</strong>. And Finally  <strong>4</strong>.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/59b36465-bae4-41e6-af2f-9933489a28dd_1613720854.9190488.png" /></p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/3a367ac3-d1e6-4f7c-a57e-57466667a550_1613720875.3771782.png" /></p>
+<p><strong>Implementation:</strong><br />
+<strong>BFS: FIFO (First In First Out)</strong><br />
+In Breadth-First-Search,  <strong>queue</strong>  is going to be our hero. Here are the steps to implement BFS programmatically.</p>
+<ol>
+<li>Put the visited node in queue.</li>
+<li>Explore its children, add them to queue, and remove the visited node.</li>
+<li>Visit all the nodes until queue becomes empty.</li>
+</ol>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/b0c246b4-7228-4737-84ac-96930750bb52_1613721366.2659638.png" /></p>
+<p>In the above tree,</p>
+<ol>
+<li>we first put the root node  <strong>A</strong>  in queue.  <strong>A</strong>’s children are  <strong>B</strong>  and  <strong>C</strong>. Add them to queue and remove  <strong>A</strong>.</li>
+<li>Further pull  <strong>B</strong>, add its children  <strong>D</strong>  and  <strong>E</strong>  to queue and remove  <strong>B</strong>.</li>
+<li>Pull  <strong>C</strong>, add its children  <strong>F</strong>  and  <strong>G</strong>  to queue and remove  <strong>C</strong>.</li>
+<li><strong>D,E,F</strong>  and  <strong>G</strong>  have no children, so pop them from queue.</li>
+</ol>
+<h3 id="question-shortest-path-to-food"><a href="https://github.com/doocs/leetcode/blob/main/solution/1700-1799/1730.Shortest%20Path%20to%20Get%20Food/README_EN.md">Question</a> : Shortest path to food</h3>
+<p><strong>Description</strong></p>
+<p>You are starving and you want to eat food as quickly as possible. You want to find the shortest path to arrive at any food cell.</p>
+<p>You are given an  <code>m x n</code>  character matrix,  <code>grid</code>, of these different types of cells:</p>
+<ul>
+<li><code>'*'</code>  is your location. There is  <strong>exactly one</strong> <code>'*'</code>  cell.</li>
+<li><code>'#'</code>  is a food cell. There may be  <strong>multiple</strong>  food cells.</li>
+<li><code>'O'</code>  is free space, and you can travel through these cells.</li>
+<li><code>'X'</code>  is an obstacle, and you cannot travel through these cells.</li>
+</ul>
+<p>You can travel to any adjacent cell north, east, south, or west of your current location if there is not an obstacle.</p>
+<p>Return  <em>the  <strong>length</strong>  of the shortest path for you to reach  <strong>any</strong>  food cell</em>. If there is no path for you to reach food, return  <code>-1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><a href="https://camo.githubusercontent.com/56a064b341f99868d79208264b3742d59cc23fe26178d12a1a9fd80d2e5532c6/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67312e6a7067"><img alt="" src="https://camo.githubusercontent.com/56a064b341f99868d79208264b3742d59cc23fe26178d12a1a9fd80d2e5532c6/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67312e6a7067" /></a></p>
+<p><strong>Input:</strong> grid = [["X","X","X","X","X","X"],["X","*","O","O","O","X"],["X","O","O","#","O","X"],["X","X","X","X","X","X"]]</p>
+<p><strong>Output:</strong> 3</p>
+<p><strong>Explanation:</strong> It takes 3 steps to reach the food.</p>
+<p><strong>Example 2:</strong></p>
+<p><a href="https://camo.githubusercontent.com/25f96060c8da5aba132e82707f60efd19a4f3b5201fd3648f4e011e26e3127a3/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67322e6a7067"><img alt="" src="https://camo.githubusercontent.com/25f96060c8da5aba132e82707f60efd19a4f3b5201fd3648f4e011e26e3127a3/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67322e6a7067" /></a></p>
+<p><strong>Input:</strong> grid = [["X","X","X","X","X"],["X","*","X","O","X"],["X","O","X","#","X"],["X","X","X","X","X"]]</p>
+<p><strong>Output:</strong> -1</p>
+<p><strong>Explanation:</strong> It is not possible to reach the food.</p>
+<p><strong>Example 3:</strong></p>
+<p><a href="https://camo.githubusercontent.com/94a7554ef5e2a7f877d39949e24c238e0c0e4be33714d2b39289df3a71176793/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67332e6a7067"><img alt="" src="https://camo.githubusercontent.com/94a7554ef5e2a7f877d39949e24c238e0c0e4be33714d2b39289df3a71176793/68747470733a2f2f666173746c792e6a7364656c6976722e6e65742f67682f646f6f63732f6c656574636f6465406d61696e2f736f6c7574696f6e2f313730302d313739392f313733302e53686f727465737425323050617468253230746f253230476574253230466f6f642f696d616765732f696d67332e6a7067" /></a></p>
+<p><strong>Input:</strong> grid = [["X","X","X","X","X","X","X","X"],["X","*","O","X","O","#","O","X"],["X","O","O","X","O","O","X","X"],["X","O","O","O","O","#","O","X"],["X","X","X","X","X","X","X","X"]]</p>
+<p><strong>Output:</strong> 6</p>
+<p><strong>Explanation:</strong> There can be multiple food cells. It only takes 6 steps to reach the bottom food.</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 200</code></li>
+<li><code>grid[row][col]</code>  is  <code>'*'</code>,  <code>'X'</code>,  <code>'O'</code>, or  <code>'#'</code>.</li>
+<li>The  <code>grid</code>  contains  <strong>exactly one</strong>  <code>'*'</code>.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">getFood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#Finding the number of rows and comuns</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span> <span class="c1">#Finding the root, from where the BFS will start, which is where the person is standing now</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">q</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+                    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span>
+                    <span class="k">break</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)])</span> <span class="c1">#Creating the Queue for the BFS</span>
+        <span class="n">directions</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="c1"># For moving up, down, right and left</span>
+        <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#For storing the number of steps</span>
+        <span class="k">while</span> <span class="n">q</span><span class="p">:</span> <span class="c1">#Doing BFS till Queue is empty</span>
+            <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#Adding one step for every level we go into the bfs</span>
+            <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)):</span> <span class="c1">#This is to visit all the nodes in the current level of the tree</span>
+                <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">directions</span><span class="p">:</span> <span class="c1">#Exploring every direction</span>
+                    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">a</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="n">b</span>
+                    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span><span class="p">:</span> <span class="c1">#If food found its a success and we can leave</span>
+                            <span class="k">return</span> <span class="n">steps</span>
+                        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span> <span class="c1">#If an empty area found we move there and mark it as a X, to show that it is visited</span>
+                            <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+                            <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>  <span class="c1"># To mark as visited</span>
+                        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="c1">#If the block is unreachable or visited we don&#39;t explore again</span>
+                            <span class="k">continue</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">Soln</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Soln</span><span class="o">.</span><span class="n">getFood</span><span class="p">([[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">],[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">],[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">],[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="s2">&quot;O&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">],[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;X&quot;</span><span class="p">]]))</span>
+</code></pre></div>
+<strong>Notes</strong>:
+<img alt="image" src="https://assets.leetcode.com/users/images/459f610d-8108-4803-8188-e2312a0a70cd_1648525376.9628026.png" /><br />
+Visualization of BFS with first 3 layers. A - root node/first lavel, C/M/B/O - second layer, D/N/L/J - third layer.  </p>
+<ol>
+<li>Algorithm uses queue for implementation.</li>
+<li>It checks whether a vertex has been explored before enqueueing the vertex.</li>
+<li>We can track if the node was already explored by modifying the original matrix.</li>
+<li>BFS algorithm can be instructed with additional array dist which can help to<br />
+    track the parent node of the next node. This will help to reconstruct the path<br />
+    by looping backward from end node.</li>
+</ol>
+<h3 id="dfs">DFS:</h3>
+<p>Is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
+<p>As BFS traverse wide, DFS goes deep. It starts from first node, and goes deep in a path till it traverse the leaf node/the last node before start traversing its next path.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/cfb07711-ceb2-44c3-978f-01255758b32b_1613720946.4616702.png" /></p>
+<p>In the above tree, it first starts from root node  <strong>1</strong>, does deep to  <strong>2</strong>  and more deeper to  <strong>4</strong>. Node  <strong>4</strong>  has no children, so it is done with that path visits  <strong>5</strong>  and traverse back to  <strong>1</strong>  and starts visiting deep  <strong>3,6</strong>  and  <strong>7</strong>.</p>
+<p>Further we can traverse in three different ways,</p>
+<ol>
+<li><strong>Pre-Order:</strong>  Visiting  <strong>root</strong>  first,  <strong>left</strong>  node next and finally  <strong>right</strong>  node.</li>
+<li><strong>Inorder:</strong>  Visiting  <strong>left</strong>  first,  <strong>root</strong>  node next and finally  <strong>right</strong>  node.</li>
+<li><strong>Post-Order:</strong>  Visiting  <strong>left</strong>  first,  <strong>right</strong>  node next and finally  <strong>root</strong>  node.</li>
+</ol>
+<p>So the traversal of above tree is going to be,</p>
+<div class="highlight"><pre><span></span><code>Pre-Order: 1245367
+Inorder: 4251637
+Post-Order: 4526731
+</code></pre></div>
+<p>DFS of graph is also goes  <strong>deep</strong>  till it traverse all the nodes in the graph.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/b5fcadc9-208e-45f6-879f-e3db861541c9_1613721257.0779736.png" /></p>
+<p><strong>Implementation:</strong>
+<strong>DFS: LIFO (Last In First Out)</strong><br />
+We are going to get the help of  <strong>stack</strong>, in order to traverse the tree/graph DFS way.</p>
+<ol>
+<li>Add the visited Node to stack.</li>
+<li>Pop the Node from stack, explore its children and add them to stack.</li>
+<li>Explore all the nodes till stack becomes empty.<br />
+    Here we are going to see pre-order traversal of the below tree using stack. Same technique can be used to perform both inorder and post-order traversals just by changing the order of visiting nodes.</li>
+</ol>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/2132f541-ed91-42a3-a6ba-e33052cb4488_1613721512.2723231.png" /></p>
+<h3 id="question-keys-and-rooms"><a href="https://leetcode.com/problems/keys-and-rooms/">Question</a>: Keys and Rooms</h3>
+<p><strong>Description</strong>
+There are  <code>n</code>  rooms labeled from  <code>0</code>  to  <code>n - 1</code> and all the rooms are locked except for room  <code>0</code>. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.</p>
+<p>When you visit a room, you may find a set of  <strong>distinct keys</strong>  in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.</p>
+<p>Given an array  <code>rooms</code>  where  <code>rooms[i]</code>  is the set of keys that you can obtain if you visited room  <code>i</code>, return  <code>true</code>  <em>if you can visit  <strong>all</strong>  the rooms, or</em>  <code>false</code>  <em>otherwise</em>.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> rooms = [[1,3],[3,0,1],[2],[0]]</p>
+<p><strong>Output:</strong> false</p>
+<p><strong>Explanation:</strong> We can not enter room number 2 since the only key that unlocks it is in that room.</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> rooms = [[1,3],[3,0,1],[0],[2]]</p>
+<p><strong>Output:</strong> true</p>
+<p><strong>Explanation:</strong> 
+We visit room 0 and pick up key 1.
+We then visit room 1 and pick up key 3.
+We then visit room 3 and pick up key 2.
+We then visit room 3 and pick up key 0.
+Since we were able to visit every room, we return true.</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>n == rooms.length</code></li>
+<li><code>2 &lt;= n &lt;= 1000</code></li>
+<li><code>0 &lt;= rooms[i].length &lt;= 1000</code></li>
+<li><code>1 &lt;= sum(rooms[i].length) &lt;= 3000</code></li>
+<li><code>0 &lt;= rooms[i][j] &lt; n</code></li>
+<li>All the values of  <code>rooms[i]</code>  are  <strong>unique</strong>.</li>
+</ul>
+<p>In above example,</p>
+<ol>
+<li>First we are visiting Node  <strong>1</strong>, add them to stack, explore its children and add its right child  <strong>3</strong>  first and then left child  <strong>2</strong>.</li>
+<li>Now the stack has nodes  <strong>2</strong>  and  <strong>3</strong>. Explore  <strong>2</strong>’s children and add its right child  <strong>5</strong>  and then its left child  <strong>4</strong>  to stack. And pop  <strong>2</strong>.</li>
+<li>Further pop nodes from stack and add its children until stack becomes empty.</li>
+</ol>
+<p><strong>Solution</strong>
+-   The basic idea of the code is to keep a record of all the keys you have already obtained.
+-   You can obtain all the keys in the rooms that you can go to
+-   And if the count of all the keys you can obtain is equal to the number of rooms, your answer is True.</p>
+<p><strong>Code</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">canVisitAllRooms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rooms</span><span class="p">):</span>
+        <span class="n">visited</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">rooms</span><span class="p">)</span> <span class="c1">#The visited array for the DFS to make sure we don&#39;t explore visited nodes again</span>
+        <span class="n">stack</span><span class="o">=</span><span class="n">deque</span><span class="p">()</span> <span class="c1">#The stack for carrying the BFS</span>
+        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#We know the root node is 0 since it is marked in the question, so we add it</span>
+
+        <span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span> <span class="c1">#DFS till stack is empty</span>
+            <span class="n">key</span><span class="o">=</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span> <span class="c1">#Marking node as visited, it can be done while adding into stack as well, like in the last question</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">rooms</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span> <span class="c1">#Exploring all options, the keys found in the new room</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="kc">False</span><span class="p">):</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span><span class="c1">#If all rooms are visited the result is True, else False</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="kc">False</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>                    
+
+
+<span class="n">Soln</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Soln</span><span class="o">.</span><span class="n">canVisitAllRooms</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[]]))</span>
+</code></pre></div>
+<strong>Notes</strong>:</p>
+<ol>
+<li>Algorithm usually uses recursion implementation.</li>
+<li>We mark the node as visited and will keep exploring its neighbors if there are not yet explored.</li>
+<li>DFS can be useful to find connected components. We can iterate through the nodes and call dfs() to find all nodes which belongs to component.</li>
+<li>We can use unordered_map<int, vector> to represent the graph.</li>
+</ol>
+<h3 id="minimum-spanning-tree-prims-algorithm">Minimum Spanning Tree (Prim's Algorithm):</h3>
+<p>Minimum Spanning Tree (MST) is a spanning tree with  <strong>least possible edge weight</strong>. What that means is that it is an undirected graph, where all the vertices are connected, with least possible edge weight, and no cycles. A weighted, undirected, and connected graph can have many spanning trees but  <strong>only one</strong>  MST.</p>
+<p>Here is an image of a weighted, undirected, and connected graph. Blue edges are all the spanning trees of this graph and  <strong>red edges are the minimum spanning tree</strong>  (We will only use MST for all the future explanations in this guide.)</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/f8c9bef6-57b5-452d-bf56-813f3ae638a5_1616967620.6859152.png" /></p>
+<p>The total number of vertices, V in this Graph are 6. The total number of edges, E in an MST is  <strong>(V-1)</strong>  i.e. 6-1=5 edges. This is what the MST looks like for the above graph-</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/2273c26f-bc41-49da-9660-c154704a4dc3_1616967755.0905151.png" /></p>
+<p>Alright, now that we have a basic understanding of how MST is supposed to be, let’s try and understand how to find a minimum spanning tree when given a graph!</p>
+<p><strong>Prim's Algorithm</strong><br />
+Prim’s algorithm is a greedy algorithm. To find the MST using Prim’s, we pick an initial starting vertex and add it to a set. Then we grow the MST from that initial vertex by adding adjacent vertices one by one based on least value of edge weight.</p>
+<p>Let’s create 2 disjoint (no common value) subsets of vertices, one is called StartSet and the other is called MstSet. StartSet is a key value pair with vertices and their distances from the adjacent vertix that has been added to the MstSet.<br />
+In the beginning, StartSet has all the vertices and MstSet has nothing.</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, INF), (B, INF), (C, INF), (D, INF), (E, INF), (F, INF)}
+MstSet: {}
+</code></pre></div>
+<p>Let’s pick a starting point. It doesn’t matter which one because MST is unique and no matter where you start, you are going to end up with the same tree.</p>
+<p>I will begin at vertex C. From vertex C, we have the following paths-<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/4741f613-eeed-4385-bead-b886303b5301_1616968241.0673938.png" /></p>
+<p>Since we picked our starting point, let's add vertex C to MstSet and update it's value to 0 in StartSet (as it is our initial vertex and distant from a node to itself is 0.<br />
+Also update the values of vertices adjacent to C with their distances from C. Since A, D and E are adjacent to C, their values in StartSet are updated. Our subsets look as follows-</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 7), (B, INF), (C, 0), (D, 2), (E, 3), (F, INF)}
+MstSet: {C}
+</code></pre></div>
+<p>From C, we can either pick A, D, or E as our next vertex.<br />
+Since the Prim's algorithm is Greedy, it will choose the path of least value i.e. the edge between C and D and will add vertex D to MstSet.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/53d1882b-4c4a-46d4-a704-de8658a9e715_1616968241.122233.png" /><br />
+Next, the same process repeats with D. Update the value of vertices adjacent to D in StartSet. One thing to note here is that the distance of A from D is 6 which is less than distance of A from C. Therefore, in our subset StartSet, the value of A will update to 6 from 7. Same goes for E whose value will be updated from 3 to 1.<br />
+Let's look at the values in our subsets-</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 6), (B, 7), (C, 0), (D, 2), (E, 1), (F, INF)}
+MstSet: {C, D}
+</code></pre></div>
+<p>So far we have C and D in our MST. Let's grow our MST some more by picking the next vertex.</p>
+<p>Now our edge values are 6, 7 and 1. Since 1 is smallest, the next vertex to be added to the MstSet will be E. You can also look at our subsets and see that out of all the vertices that are currently not in MstSet, E has the least value.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/3beebdeb-f544-48b9-9eeb-bb66b9203d7c_1616968241.0846808.png" /><br />
+Continuing our tradition of updating adjacent vertices in StartSet, B is updated to 5 and F is updated to 4.<br />
+Our subsets currently look like this-</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 6), (B, 5), (C, 0), (D, 2), (E, 1), (F, 4)}
+MstSet: {C, D, E}
+</code></pre></div>
+<p>Now we may have a problem! The values of edges coming from E are 3, 4 and 5. Since 3 is smaller than the 2, ideally we should pick that. However, we can't do that because C is already in MstSet. So we will go a step further and pick the edge with value 4 i.e. the E-F edge.<br />
+Once again, add F to MstSet and update the adjacent vertices' values.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/5372e4c4-ec23-4736-bc8d-fe33e31b0c1e_1616968241.1647825.png" /></p>
+<p>There is no change of values for vertices adjacent to F.<br />
+Let's take a quick look at our subsets after adding F.</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 6), (B, 5), (C, 0), (D, 2), (E, 1), (F, 4)}
+MstSet: {C, D, E, F}
+</code></pre></div>
+<p>Now the only vertices that are not in MstSet are A and B. As you can see from the subset, between A and B, B has the smaller value (5). Also in the graph, the least value of edge weight to reach B is 5 (E-B edge) as compared to A which is 7 (F-A edge).</p>
+<p>Therefore, we will go ahead and add B to our MstSet and update the values of it's adjacent vertices.<br />
+Value of A is updated to 3.<br />
+Our subsets look like this-</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 3), (B, 5), (C, 0), (D, 2), (E, 1), (F, 4)}
+MstSet: {C, D, E, F, B}
+</code></pre></div>
+<p>Now, only A needs to be added. As we can see from both the graph and the subset, the least cost way to reach A is through A-B edge.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/6793ff5d-6736-4cd5-aa49-d6e97b4058ea_1616968241.3497143.png" /><br />
+So, we will add A to our MstSet.<br />
+Let's look at the final values of our subsets-</p>
+<div class="highlight"><pre><span></span><code>StartSet: {(A, 3), (B, 5), (C, 0), (D, 2), (E, 1), (F, 4)}
+MstSet: {C, D, E, F, B, A}
+</code></pre></div>
+<p>All the vertices have been added to the MstSet!<br />
+And finally, we have our Minimum Spanning Tree.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/2c3826ff-3b77-44ea-867b-14a178321d2d_1616968241.1259313.png" /></p>
+<h3 id="question-optimized-water-distribution-in-a-village"><a href="https://github.com/azl397985856/leetcode/blob/master/problems/1168.optimize-water-distribution-in-a-village-en.md">Question</a>: Optimized water distribution in a village</h3>
+<p><strong>Description</strong></p>
+<p>There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes.</p>
+<p>For each house i, we can either build a well inside it directly with cost wells[i], or pipe in water from another well to it. The costs to lay pipes between houses are given by the array pipes, where each pipes[i] = [house1, house2, cost] represents the cost to connect house1 and house2 together using a pipe. Connections are bidirectional.</p>
+<p>Find the minimum total cost to supply water to all houses.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> n = 3, wells = [1,2,2], pipes = [[1,2,1],[2,3,1]]</p>
+<p><strong>Output:</strong> 3</p>
+<p><strong>Explanation:</strong> 
+The image shows the costs of connecting houses using pipes.
+The best strategy is to build a well in the first house with cost 1 and connect the other houses to it with cost 2 so the total cost is 3.</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li>1 &lt;= n &lt;= 10000 </li>
+<li>wells.length == n </li>
+<li>0 &lt;= wells[i] &lt;= 10^5 </li>
+<li>1 &lt;= pipes.length &lt;= 10000 </li>
+<li>1 &lt;= pipes[i][0], pipes[i][1] &lt;= n </li>
+<li>0 &lt;= pipes[i][2] &lt;= 10^5 </li>
+<li>pipes[i][0] != pipes[i][1] </li>
+</ul>
+<p>example 1 pic:</p>
+<p><a href="https://camo.githubusercontent.com/8370f44739d5a49b9e660395388706b734e13a23b42bd792f893b1930bfa2fcc/68747470733a2f2f702e697069632e7669702f7838626230342e6a7067"><img alt="example 1" src="https://camo.githubusercontent.com/8370f44739d5a49b9e660395388706b734e13a23b42bd792f893b1930bfa2fcc/68747470733a2f2f702e697069632e7669702f7838626230342e6a7067" /></a></p>
+<p><strong>Code</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">heapq</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">minCostToSupplyWater</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">wells</span><span class="p">,</span> <span class="n">pipes</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1">#First step is creating the adjacency list to represent the graph</span>
+
+        <span class="c1">#The question as of now is not in MST since nodes value cost as well, this can be converted to MST by adding a base node</span>
+        <span class="c1">#This base node will have edge with every node with a weight equivalent to the cost of that node, and will also serve as the root node</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cost</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">wells</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="c1">#Adding all the edges to the base node, cost equal to cost of well</span>
+            <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cost</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cost</span> <span class="ow">in</span> <span class="n">pipes</span><span class="p">:</span> <span class="c1">#Adding all other edges as adjacency list, cost first so it can be used in a heap</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cost</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cost</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+        <span class="n">ans</span><span class="p">,</span> <span class="n">visited</span><span class="p">,</span> <span class="n">heap</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#Answer is the final minimum cost, visited is the visited array, heap is to carry the Prim&#39;s</span>
+        <span class="n">visited</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#Starting with the root, our case the node we added, node 0</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">heap</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span> <span class="c1">#Only visiting unvisited nodes</span>
+                <span class="n">visited</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ans</span><span class="o">+</span><span class="n">d</span> <span class="c1">#For adding to our heap, each edge adds to the cost of the spanning tree </span>
+                <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span> <span class="c1">#Adding the new node to our heap    </span>
+        <span class="k">return</span> <span class="n">ans</span>                  
+
+
+<span class="n">Soln</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Soln</span><span class="o">.</span><span class="n">minCostToSupplyWater</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]]))</span>
+</code></pre></div>
+<h3 id="dijkstras-algorithm">Dijkstra's algorithm:</h3>
+<p>Is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.</p>
+<p>Dijkstra's algorithm is a  <strong>Single-Source-Shortest-Path algorithm</strong>, which means that it calculates shortest distance from one vertex to all the other vertices.</p>
+<p>The node from where we want to find the shortest distance is known as the  <strong>source node</strong>. For the rest of the tutorial, I'll always label the source node as  <strong>S</strong>. And the distance to source node is naturally going to be  <strong>zero</strong>.</p>
+<div class="highlight"><pre><span></span><code>So, if we had an array of distances called dist[] and source node is 2 then dist[] would be 
+[INF, INF, 0, INF, INF] 
+  0    1   2   3    4
+// Consider INF as infinity since we don&#39;t know what the actual distance is. But we are very much sure that the distance to the source node is 0.
+</code></pre></div>
+<p>Let's start.</p>
+<p>Have a look at the image below. We shall work with it in this tutorial.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/3cfb95be-11e6-4a61-8c54-397388698f9f_1612973716.479781.png" /></p>
+<p>Remember what I said about the source node? I said that we were  <strong>SURE</strong>  that the shortest distance to source node is going to be zero. Do you agree with me on that point? Of course, yes, because there was no path to travel.</p>
+<p>What does the distance array for our graph look like?</p>
+<div class="highlight"><pre><span></span><code>Node     |  S   A   B   C   D 
+Distance |  0  INF INF INF INF
+</code></pre></div>
+<p>Let's break the problem. Let's rip apart this graph.</p>
+<p>We are at S currently. Let's see where we can go from S.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/6746ae95-91de-4705-812f-8451c56a2bb8_1612973800.0847409.png" /></p>
+<p>You are at node S. There are 2 edges that come out of S. One edge goes to A and other goes to B. Edge SA distance is 15 and edge SB distance if 10. You can clearly verify this in the figure.</p>
+<p>I now claim that I am SURE that the shortest distance to B is 10. Why though? How many other ways are possible, through which you can reach to node B? Maybe there will be some edge from A to B. But since distance to A is already 15, any edge from A to B will only increase that distance and will never be able to become less than 10. This is the most important step. Read it again if you did not get it.</p>
+<p>Now, that I am SURE of the shortest distance to reach B, I discover more vertices from B.</p>
+<p>Now, our exploration graph looks something like this.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/374e1c43-bff9-47d0-b453-1c5d9daf94e4_1612973846.186549.png" /><br />
+and the distance array has been updated.</p>
+<div class="highlight"><pre><span></span><code>Node     |  S   A   B   C   D 
+Distance |  0  INF  10 INF INF
+</code></pre></div>
+<p>Let's see what the current scenario looks like.</p>
+<p>Nodes for which we know the shortest distance: S and B.</p>
+<p>What are we looking at now?</p>
+<p>At all the nodes we can reach from the S and B.</p>
+<p>Again, the same question. Which node's shortest distance can we be SURE of ?</p>
+<p>I claim it's node D.<br />
+Look at the figure again.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/08f2557a-7db6-406d-b7c6-8963c32dcfa9_1612973908.7902455.png" /><br />
+The distance to D is 10 + 1 = 11, and no other path can have length smaller than this since their own distances are greater than 11.</p>
+<p>Hence, we now include D in our set of vertices for which shortest distances is known. Also, we explore more edges going from node D.</p>
+<p>Note that we are always picking the green vertex with the minimum distance.</p>
+<p>So, now our exploration graph looks something like this.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/7d57800a-5fdc-4242-8877-66322ca709ba_1612973944.6547043.png" /><br />
+Distance has been updated.</p>
+<div class="highlight"><pre><span></span><code>Node     |  S   A   B   C   D 
+Distance |  0  INF  10 INF  11
+</code></pre></div>
+<p>Now, same question. Which node's shortest distance can we be SURE of? More specifically. Which green node's shortest distance can we be SURE of? Yes, right. It is C because the path S-B-D-C gives distance of 10 + 1 + 3 = 14 which is the lowest.</p>
+<p>Hence, we include C into the set of nodes for which final distance have been finalized and we also explore it's neighbours.</p>
+<p>The exploration graph now looks like this.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/6a64e3aa-dada-4c56-be5f-fc15c7bcd429_1612973987.8125973.png" /><br />
+Distance has been updated again.</p>
+<div class="highlight"><pre><span></span><code>Node     |  S   A   B   C   D 
+Distance |  0  INF  10  14  11
+</code></pre></div>
+<p>Again, for which node are we SURE of? There is just one node remaining and so it is the shortest. So, we include it in the set of nodes whose final distances are known and explore it's neighbours.</p>
+<p>Now, the exploration graph is as follows:<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/50fe5e41-a2a2-4085-a22a-6d724a111559_1612974049.2119877.png" /></p>
+<p>Final distance array now looks like this:</p>
+<div class="highlight"><pre><span></span><code>Node     |  S   A   B   C   D 
+Distance |  0  15  10  14  11
+</code></pre></div>
+<p>But now, since we have no green nodes, we stop. We have visited all the nodes.</p>
+<p>Couple of key points here. How were we SURE of the shortest distance of a green node? That node had the shortest distance among all the other green nodes.</p>
+<p><strong>Now, summarizing Djikstra's algorithm:</strong></p>
+<ol>
+<li>We keep a set of vertices for which final shortest distance is already known to us. Initially only the source vertex S belongs to this set.</li>
+<li>We do several iterations, during which we pick the green node with the minimum distance and add it to the set of vertices whose distances are finalized and also all nodes reaching from this node and not VISITED (i.e. NOT MARKED YELLOW), are made green.</li>
+</ol>
+<p>And that's it. That's the working of Djikstra's algorithm.</p>
+<p>Regarding the implementation, since we need the node with minimum distance, a min-heap is prefered. Implementations with sets( the ones based on BSTs) are also popular. You can find the implementations online with both the data structures.</p>
+<p>Now, for a moment, let's go back to where we started.</p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/ff1bfecb-d267-4944-a55a-d00c0c37f5ba_1612974108.4932501.png" /><br />
+At this point, we chose B. So, what we have done is finalized the distance to B and it can never be changed in coming iterations. Now, let's say that there was an edge from A to B with cost as -10 (Negative ten). The distance then is 15 + (-10) = 5, which is lower than 10.</p>
+<p>But, we had said that it can never be less than 10. Then, how come this?</p>
+<p>Here is the truth. Djikstra's algorithm doesn't work for negative edge weights.</p>
+<p>Let's think about the graphs involving negative weights cycles. If there is a negative weight cycle like the C-A-B-C below, we can keep moving in cycles and each iteration of the cycle will decrease the distance, so negative weight cycle is a big NO for Djikstra.<br />
+<img alt="image" src="https://assets.leetcode.com/users/images/0eefe88c-4e66-4ad0-9032-0e20ca1fe2de_1612974143.5970755.png" /><br />
+It's intuitive to understand that Djikstra doesn't work for negative cycles but not very intuitive to understand why it doesn't work for negative edges with no negative cycles.</p>
+<h3 id="question-network-delay-time"><a href="https://leetcode.com/problems/network-delay-time/">Question</a> : Network Delay Time</h3>
+<p>You are given a network of  <code>n</code>  nodes, labeled from  <code>1</code>  to  <code>n</code>. You are also given  <code>times</code>, a list of travel times as directed edges  <code>times[i] = (ui, vi, wi)</code>, where  <code>ui</code>  is the source node,  <code>vi</code>  is the target node, and  <code>wi</code>  is the time it takes for a signal to travel from source to target.</p>
+<p>We will send a signal from a given node  <code>k</code>. Return  <em>the  <strong>minimum</strong>  time it takes for all the</em>  <code>n</code>  <em>nodes to receive the signal</em>. If it is impossible for all the  <code>n</code>  nodes to receive the signal, return  <code>-1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><img alt="" src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png" /></p>
+<p><strong>Input:</strong> times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2</p>
+<p><strong>Output:</strong> 2</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 1</p>
+<p><strong>Output:</strong> 1</p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> times = [[1,2,1]], n = 2, k = 2</p>
+<p><strong>Output:</strong> -1</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= k &lt;= n &lt;= 100</code></li>
+<li><code>1 &lt;= times.length &lt;= 6000</code></li>
+<li><code>times[i].length == 3</code></li>
+<li><code>1 &lt;= ui, vi &lt;= n</code></li>
+<li><code>ui != vi</code></li>
+<li><code>0 &lt;= wi &lt;= 100</code></li>
+<li>All the pairs  <code>(ui, vi)</code>  are  <strong>unique</strong>. (i.e., no multiple edges.)</li>
+</ul>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">heapq</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">networkDelayTime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="c1">#create adjacency list</span>
+        <span class="n">adjList</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span> <span class="c1">#Format of the adjacency list node: [neighbour, weight]</span>
+        <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">times</span><span class="p">:</span>
+            <span class="n">adjList</span><span class="p">[</span><span class="n">src</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">dest</span><span class="p">,</span> <span class="n">weight</span><span class="p">])</span>
+        <span class="c1">#create minHeap</span>
+        <span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">minHeap</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">])</span> <span class="c1">#Minheap is of the structure distance, node; Initial is 0,k since k is starting node as written in question and its at 0 distance from itself</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heapify</span><span class="p">(</span><span class="n">minHeap</span><span class="p">)</span>
+        <span class="c1">#dikjstra </span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Initial distance to all nodes is infinite</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#Distance to the starting node set to zero since it is the starting node itself</span>
+        <span class="k">while</span> <span class="n">minHeap</span><span class="p">:</span> <span class="c1">#Minheap to implement the jijkstras</span>
+            <span class="n">dis</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">adjList</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+                <span class="n">edgeWeight</span> <span class="o">=</span> <span class="n">it</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">edgeNode</span> <span class="o">=</span> <span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">dis</span><span class="o">+</span><span class="n">edgeWeight</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">edgeNode</span><span class="p">]:</span> <span class="c1">#Applying the formula to update the distance array</span>
+                    <span class="n">dist</span><span class="p">[</span><span class="n">edgeNode</span><span class="p">]</span> <span class="o">=</span> <span class="n">dis</span><span class="o">+</span><span class="n">edgeWeight</span>
+                    <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="p">[</span><span class="n">dist</span><span class="p">[</span><span class="n">edgeNode</span><span class="p">],</span> <span class="n">edgeNode</span><span class="p">])</span> <span class="c1">#Since the node is visited now, we add it to our heap</span>
+        <span class="c1">#result</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">#Max of all the latency, else -1 if not possible</span>
+
+<span class="n">Soln</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Soln</span><span class="o">.</span><span class="n">networkDelayTime</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<strong>Description</strong></p>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/728062f8-be3e-407c-a010-64da141864ed_1648524882.3623493.png" /><br />
+Visualization of traversing graph using Dijkstra algorithm and distance array. The priority queue itself is not shown there, as well as redundant nodes that we might have in priority queue. Green node - explored/current node, Yellow - node in the priority queue.<br />
+<strong>Notes</strong>:</p>
+<ol>
+<li>We will have a set to track visited nodes.</li>
+<li>We will create a distance array to track the distance to each node. Initial node will have 0, others maximum. There is a room for optimization: if the node we got from the pq has larger cost than in our dist[] array, we should not explore it as we already got a better option.</li>
+<li>We will use min priority_queue to get the node with the minimum distance from the current node.</li>
+<li>If we are only interested in shortes distance till some END node, we can terminate the search earlier: if (node == dst) return cost;</li>
+<li>If we already find a better path we shouldn't explore it further: if (dist[node] &lt; stops) continue;</li>
+</ol>
+<h2 id="extra-graph-algorithms">Extra Graph Algorithms:</h2>
+<h3 id="union-find">Union-Find:</h3>
+<p>Union–find data structure or disjoint-set data structure or merge–find set, is a data structure that stores a collection of disjoint (non-overlapping) sets. Equivalently, it stores a partition of a set into disjoint subsets. It provides operations for adding new sets, merging sets (replacing them by their union), and finding a representative member of a set. Helps to find the number of connected components, and can help to find MST.</p>
+<div class="highlight"><pre><span></span><code>class UnionFind {
+    public:
+    UnionFind(int n) : parent(n) {
+        iota(parent.begin(), parent.end(), 0);
+    }
+
+    int Find(int x) {
+        int temp = x;
+        while (temp != parent[temp]) {
+            temp = parent[temp];
+        }
+        // Path compression below
+        while (x != temp) {
+            int next = parent[x];
+            parent[x] = temp;
+            x = next;
+        }
+        return x;
+    }
+
+    void Union(int x, int y) {
+        int xx = Find(x);
+        int yy = Find(y);
+        if (xx != yy) {
+            parent[xx] = yy;
+        }
+    }
+
+    private:
+           vector&lt;int&gt; parent;
+};
+</code></pre></div>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/1928b46b-6191-4858-879e-4a28c5857646_1648524550.5650837.png" /><br />
+The above picture demonstrates the state of the parent array after multiple Union() calls, follows multiple Find() calls.<br />
+<strong>Notes</strong>:<br />
+1. We can use vector to hold the set of nodes or unordered_map<int, int> if we don't know the amount of nodes.<br />
+2. If the parent[id] == id, we know that id is the root node.<br />
+3. The data structure using two methods Union() - union to nodes/components, and Find() - find the root node.<br />
+4. We can do path compression, so after some number of Find() calls it will be O(1) to call Find() again.</p>
+<h3 id="minimum-spanning-tree-union-find">Minimum Spanning Tree (Union Find):</h3>
+<p>A minimum spanning tree (MST) is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.<br />
+Solution for Connecting Cities With Minimum Cost:  <a href="https://leetcode.com/problems/connecting-cities-with-minimum-cost/">https://leetcode.com/problems/connecting-cities-with-minimum-cost/</a>.</p>
+<div class="highlight"><pre><span></span><code>class UnionFind {
+public:
+    UnionFind(int n) : parent(n) {
+          iota(parent.begin(), parent.end(), 0);
+    }
+    int Find(int x) {
+        int temp = x;
+        while (temp != parent[temp]) {
+            temp = parent[temp];
+        }
+        while (x != temp) {
+            int next = parent[x];
+            parent[x] = temp;
+            x = next;
+        }
+        return temp;
+    }
+    bool Union(int x, int y) {
+        int xx = Find(x);
+        int yy = Find(y);
+        if (xx == yy) return false;
+        parent[xx] = yy;
+        return true;
+    }
+
+private:
+    vector&lt;int&gt; parent;
+};
+int minimumCost(int n, vector&lt;vector&lt;int&gt;&gt;&amp; connections) {
+    sort(connections.begin(), connections.end(), [](const auto&amp; lhs, const auto&amp; rhs){
+        return lhs[2] &lt; rhs[2];
+    });
+    UnionFind uf(n + 1);
+    int sum = 0, count = 0;
+    for (auto&amp; c : connections) {
+        if (uf.Union(c[0], c[1])) {
+            count++;
+            sum += c[2];
+        }
+        if (count == n - 1) return sum; // Return earlier once graph is connected.
+    }
+    return -1;
+}
+</code></pre></div>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/8daae278-0e2f-4a1e-a9bd-4e1ffd586b63_1648921439.7056665.png" /><br />
+Visualization of Kruskal's algorithm: we will try to union nodes if they are not connected.<br />
+<strong>Notes</strong>:<br />
+1. One of the implementation of MST algorithm use Union Find algorithm (Kruskal's Algorithm).<br />
+2. We need to sort elements by the weight before appying the algorithm, or we can use min priority_queue.</p>
+<h3 id="topological-sort">Topological sort:</h3>
+<p>Is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.</p>
+<div class="highlight"><pre><span></span><code>    // Kahn&#39;s Algorithm
+    vector&lt;vector&lt;int&gt;&gt; adj(numCourses);
+    vector&lt;int&gt; indegree(numCourses, 0);
+    for (auto&amp; p : prerequisites) {
+        indegree[p[1]]++;
+        adj[p[0]].push_back(p[1]);
+    }
+    queue&lt;int&gt; q;
+    for (int i = 0; i &lt; numCourses; i++) {
+        if (indegree[i] == 0) q.push(i);
+    }
+    int prereq = 0;
+    while (!q.empty()) {
+        int el = q.front();
+        q.pop();
+        prereq++;
+        for (auto&amp; next : adj[el]) {
+            if (--indegree[next] == 0) {
+                q.push(next);
+            }
+        }
+    }
+    return prereq == numCourses;
+</code></pre></div>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/86fb9718-3b96-46b8-8b1f-7697449441ef_1648781045.0548813.png" /><br />
+The above picture demonstrates linear order of the given graph. The vertices can be tasks, and edges can represent some contraints, such as U should be finished before V in (U -&gt; V).<br />
+<strong>Notes</strong>:<br />
+1. We will have the indegree array to count, which nods should be visited first.<br />
+2. We will have a queue to push the nodes that don't have any dependencies.</p>
+<h3 id="bellman-ford">Bellman Ford:</h3>
+<p>Is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.</p>
+<div class="highlight"><pre><span></span><code>class Solution {
+public:
+    int networkDelayTime(vector&lt;vector&lt;int&gt;&gt;&amp; times, int n, int k) {
+        vector&lt;int&gt; dist(n + 1, INT_MAX);
+        dist[k] = 0;
+        for (int i = 1; i &lt;= n; i++) {
+            for (auto&amp; t : times) {
+                if (dist[t[0]] != INT_MAX &amp;&amp; dist[t[1]] &gt; dist[t[0]] + t[2]) {
+                    dist[t[1]] = dist[t[0]] + t[2];
+                }
+            }
+        }
+        int res = 0;
+        for (int i = 1; i &lt;= n; i++) {
+            res = max(res, dist[i]);
+        }
+        return res == INT_MAX ? -1 : res;
+    }
+};
+</code></pre></div>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/615a0afc-e71f-4eed-80e8-b4bd7fba62aa_1649125105.5058165.png" /><br />
+The above picture demonstrates how the dist array incrementally updated with better values. If not a single value is updated during iteration - we can stop earlier.<br />
+<strong>Notes</strong>:<br />
+1. We will use the array to hold the distance between particular start node and all others.<br />
+2. We will try to improve distance n times between all nodes in the graph.</p>
+<h3 id="floyd-warshall">Floyd Warshall:</h3>
+<p>Is an algorithm for finding shortest paths in a directed weighted graph with positive or negative edge weights.</p>
+<div class="highlight"><pre><span></span><code>class Solution {
+public:
+    int networkDelayTime(vector&lt;vector&lt;int&gt;&gt;&amp; times, int n, int k) {
+        vector&lt;vector&lt;long&gt;&gt; dist(n, vector&lt;long&gt;(n, INT_MAX));
+        for (auto&amp; t : times)
+            dist[t[0] - 1][t[1] - 1] = t[2];
+        for (int i = 0; i &lt; n; i++)
+            dist[i][i] = 0;
+        for (int k = 0; k &lt; n; k++) {
+            for (int i = 0; i &lt; n; i++) {
+                for (int j = 0; j &lt; n; j++) {
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+                }
+            }
+        }
+        long res = INT_MIN;
+        for (int i = 0; i &lt; n; i++) {
+            if (dist[k - 1][i] == INT_MAX) return -1;
+            res = max(res, dist[k - 1][i]);
+        }
+        return (int)res;
+    }
+};
+</code></pre></div>
+<p>Vizualization for Floyd Warshall is slightly different from Bellman Ford, but the idea stays the same.<br />
+<strong>Notes</strong>:<br />
+1. We will use vector<vector> to keep track of distance between nodes i and j.<br />
+2. We will have a 3 loops, checks if we can improve the distance between i and j by using k node.</p>
+<h3 id="eulearian-path">Eulearian Path:</h3>
+<p>Is an algorithm that finds a path that uses every  <em><strong>edge</strong></em>  in a graph only once.<br />
+The algorithm below is a solution for the "<strong>Reconstruct Itinerary</strong>":  <a href="https://leetcode.com/problems/reconstruct-itinerary/">https://leetcode.com/problems/reconstruct-itinerary/</a></p>
+<div class="highlight"><pre><span></span><code>class Solution {
+public:
+    void dfs(unordered_map&lt;string, multiset&lt;string&gt;&gt;&amp; graph,
+             vector&lt;string&gt;&amp; res, string start) {
+        while (graph[start].size() &gt; 0) {
+            auto next = *graph[start].begin();
+            graph[start].erase(graph[start].begin());
+            dfs(graph, res, next);
+        }
+        res.push_back(start);
+    }
+    vector&lt;string&gt; findItinerary(vector&lt;vector&lt;string&gt;&gt;&amp; tickets) {
+        unordered_map&lt;string, multiset&lt;string&gt;&gt; graph;
+        for (const auto&amp; t : tickets) graph[t[0]].insert(t[1]);
+        vector&lt;string&gt; res;
+        dfs(graph, res, &quot;JFK&quot;);
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
+</code></pre></div>
+<p><img alt="image" src="https://assets.leetcode.com/users/images/9ca4dffd-5db0-4c68-b0ce-13edcc291b92_1647721389.4328434.png" /><br />
+The above picture is the visualization of eulerian path algorithm. You can observe how the result is constructed on the backtracking.<br />
+<strong>Notes</strong>:<br />
+1. The algorithm almost identical to the dfs traversal with one main instrumentation: we are building the path on the backtrack of the dfs algorithm:  <code>res.push_back(start);</code><br />
+2. That is why we should reverse the list at the end of the traversal:  <code>reverse(res.begin(), res.end());</code><br />
+3. In the above implementation we are using multiset (because of the problem), but the general implementation may use vector&lt;&gt; and additional vector&lt;&gt; to track the outgoing degrees, and use it for two main purposes: as index in the adj list, and to track how many node we not visited yet.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>

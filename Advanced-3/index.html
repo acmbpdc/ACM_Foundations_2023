@@ -1,0 +1,1110 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Advanced-2/">
+      
+      
+        <link rel="next" href="../Advanced-4/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+    
+    
+      
+        <title>Hash Sets and Hash Maps - ACM Foundations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acm-foundations-hash-sets-and-hash-maps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ACM Foundations" class="md-header__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACM Foundations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hash Sets and Hash Maps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Beginner-1/" class="md-tabs__link">
+          
+  
+  Beginner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Advanced-1/" class="md-tabs__link">
+          
+  
+  Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ACM Foundations" class="md-nav__button md-logo" aria-label="ACM Foundations" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    ACM Foundations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Beginner-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C Programming Foundations-4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists, Stacks and Queues
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Hash Sets and Hash Maps
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion and Dynamic Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="acm-foundations-hash-sets-and-hash-maps">ACM Foundations - Hash Sets and Hash Maps</h1>
+<h1 id="1-hash-sets">1. Hash Sets</h1>
+<h2 id="11-what-are-hash-sets">1.1 What are hash sets?</h2>
+<p>Imagine you are making a website with millions of users. Whenever a user wishes to login in to the site you will need to check if his username is in the database and then check if his password matches the one for his account. But if we have so many users then checking an array or a list with all users for this username will be very time consuming. Hash sets are a data structure that allow you to lookup a value in a very short amount of time regardless of how many elements there are.</p>
+<h2 id="12-problem-statement">1.2 Problem Statement</h2>
+<p>Let us tackle a simple version of this problem first. Can we make a program that can tell you if an element is in an array that takes a constant amout of time to run regardless of the array's size? </p>
+<h2 id="13-basic-solution">1.3 Basic Solution</h2>
+<p>Well, let us first think of what operations will take the same amount of time to run regardless of the input size :
+1. Arithmetic Operations (+, -, *, /, %)
+2. Indexing Elements in an Array (arr[i])
+3. Logical Expressions (&lt;, &gt;, ==, !=)
+4. If-Else Conditions</p>
+<p>What if we try writing a program where we have a function ind(x) that returns the expected location of an element in an array? Then this function could take as input an element x, check if the element is present at that index in the array. The way we do this is to create an array of booleans and set the value at that index to True if the element is present. Also we will name the function that returns indices our hash_function.</p>
+<p>Let us look at a simple code for a hash set that stores elements between 0 and 9.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hash_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="n">arr_size</span>
+
+    <span class="k">return</span> <span class="n">index</span>
+
+<span class="n">arr_size</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">hash_set</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">arr_size</span>
+
+<span class="n">input_elements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">input_elements</span><span class="p">:</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">hash_set</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="c1"># User input</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">new_element</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number between 0 and 9 : &quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">new_element</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">new_element</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hash_set</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element is present in the set.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element is not present in the set.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="14-expanding-hash-sets">1.4 Expanding Hash Sets</h2>
+<p>What if we have an almost infinite input scope (like usernames)? Then we will have collisions where many elements are all mapped to the same index. To accommodate this, we will create an array of linked-lists and to store an element we will insert it into the linked list at that position. Keep in mind that this is still much faster than using a single linked list to store all our values.</p>
+<p><img alt="alt text" src="https://i.stack.imgur.com/enJhc.png" /></p>
+<p>Let us now make a hash set to store any positive integer.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hash_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="n">arr_size</span>
+
+    <span class="k">return</span> <span class="n">index</span>
+
+<span class="k">def</span> <span class="nf">insert_ele</span><span class="p">(</span><span class="n">hash_set</span><span class="p">,</span> <span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">hash_set</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_present</span><span class="p">(</span><span class="n">hash_set</span><span class="p">,</span> <span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">linked_list</span> <span class="o">=</span> <span class="n">hash_set</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linked_list</span><span class="p">)):</span>      
+        <span class="k">if</span> <span class="n">linked_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">ele</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">arr_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">hash_set</span> <span class="o">=</span> <span class="p">[[]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arr_size</span><span class="p">)]</span>
+
+<span class="n">input_elements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">input_elements</span><span class="p">:</span>
+    <span class="n">insert_ele</span><span class="p">(</span><span class="n">hash_set</span><span class="p">,</span> <span class="n">ele</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+
+<span class="c1"># User input</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">new_element</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a number: &quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">new_element</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">is_present</span><span class="p">(</span><span class="n">hash_set</span><span class="p">,</span> <span class="n">new_element</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element is present in the set.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element is not present in the set.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="14-efficient-python-implementation">1.4 Efficient Python Implementation</h2>
+<p>To use hash sets efficiently in python, there is the built-in set datatype. Let us see the speed increase of this class over a python list. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">7</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+
+<span class="n">lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">hash_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">limit</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The list took </span><span class="si">{}</span><span class="s2"> seconds to search though the whole list.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">limit</span> <span class="ow">in</span> <span class="n">hash_set</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The set took </span><span class="si">{}</span><span class="s2"> seconds to search though the whole list.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+</code></pre></div>
+<h1 id="2-hash-map">2. Hash Map</h1>
+<h2 id="21-extending-hash-sets">2.1 Extending Hash Sets</h2>
+<p>A hash set can only be used to find if an element is in an array. What if we need to find some associated value for that element? For example, in a website we will need to link the username to a password. This is where hashmaps come in, these are called mappings as they map some input to a fixed value.</p>
+<p><img alt="alt text" src="https://miro.medium.com/v2/resize:fit:554/0*TaC2P062slR3GugM.png" /></p>
+<p>We can do this by making each entry in the linked-lists hold two values, the first value will be the key and the second one will be the data we are storing. Let us look at an example with user ids and passwords.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hash_function</span><span class="p">(</span><span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">usr_id</span> <span class="o">%</span> <span class="n">arr_size</span>
+
+    <span class="k">return</span> <span class="n">index</span>
+
+<span class="k">def</span> <span class="nf">insert_usr</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">usr_id</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">hash_map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">usr_id</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">is_usr_present</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">linked_list</span> <span class="o">=</span> <span class="n">hash_map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linked_list</span><span class="p">)):</span>      
+        <span class="k">if</span> <span class="n">linked_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">usr_id</span><span class="p">:</span> <span class="c1"># index 0 is the user_id in a list entry</span>
+          <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">get_password</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">hash_function</span><span class="p">(</span><span class="n">usr_id</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">linked_list</span> <span class="o">=</span> <span class="n">hash_map</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linked_list</span><span class="p">)):</span>      
+        <span class="k">if</span> <span class="n">linked_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">usr_id</span><span class="p">:</span> <span class="c1"># index 0 is the user_id in a list entry</span>
+          <span class="k">return</span> <span class="n">linked_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># password for that user</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">arr_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">hash_map</span> <span class="o">=</span> <span class="p">[[]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arr_size</span><span class="p">)]</span>
+
+<span class="n">input_users</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;abcd&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">10016</span><span class="p">,</span> <span class="s2">&quot;12345&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">190903</span><span class="p">,</span> <span class="s2">&quot;adJn%^0&quot;</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">input_users</span><span class="p">:</span>
+    <span class="n">usr_id</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">info</span>
+    <span class="n">insert_usr</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">usr_id</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+<span class="c1"># User input</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">new_user</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a user ID: &quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">new_user</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">is_usr_present</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">new_user</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This user is not present in the database.&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">stored_pass</span> <span class="o">=</span> <span class="n">get_password</span><span class="p">(</span><span class="n">hash_map</span><span class="p">,</span> <span class="n">new_user</span><span class="p">,</span> <span class="n">arr_size</span><span class="p">)</span>
+
+    <span class="n">entered_pass</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the password: &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">stored_pass</span> <span class="o">==</span> <span class="n">entered_pass</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User authenticated!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid password. Access denied.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="22-efficient-python-implementation">2.2 Efficient Python Implementation</h2>
+<p>Much like hash sets, python has an in-built class for hash maps called dictionaries. Let us re-write the above code using them.</p>
+<div class="highlight"><pre><span></span><code><span class="n">hash_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">input_users</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;pass&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;abcd&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">10016</span><span class="p">,</span> <span class="s2">&quot;12345&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">190903</span><span class="p">,</span> <span class="s2">&quot;adJn%^0&quot;</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">input_users</span><span class="p">:</span>
+    <span class="n">usr_id</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="n">info</span>
+    <span class="n">hash_map</span><span class="p">[</span><span class="n">usr_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">password</span>
+
+<span class="c1"># User input</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">new_user</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a user ID: &quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">new_user</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="n">user_is_present</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_user</span> <span class="ow">in</span> <span class="n">hash_map</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">user_is_present</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This user is not present in the database.&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+    <span class="n">stored_pass</span> <span class="o">=</span> <span class="n">hash_map</span><span class="p">[</span><span class="n">new_user</span><span class="p">]</span>
+
+    <span class="n">entered_pass</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the password: &quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">stored_pass</span> <span class="o">==</span> <span class="n">entered_pass</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;User authenticated!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid password. Access denied.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h1 id="3-leetcode-problems">3. Leetcode Problems</h1>
+<h2 id="31-easy-problem">3.1 Easy Problem</h2>
+<p><a href="https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value/">2283. Check if Number Has Equal Digit Count and Digit Value</a></p>
+<p>(Easy)</p>
+<p>You are given a <strong>0-indexed</strong> string <code>num</code> of length <code>n</code> consisting of digits.</p>
+<p>Return <code>true</code> <em>if for </em><em>every</em><em> index</em> <code>i</code> <em>in the range</em> <code>0 &lt;= i &lt; n</code><em>, the digit</em> <code>i</code> <em>occurs</em> <code>num[i]</code> <em>times in</em> <code>num</code><em>, otherwise return</em> <code>false</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> num = "1210"
+<strong>Output:</strong> true
+<strong>Explanation:</strong>
+num[0] = '1'. The digit 0 occurs once in num.
+num[1] = '2'. The digit 1 occurs twice in num.
+num[2] = '1'. The digit 2 occurs once in num.
+num[3] = '0'. The digit 3 occurs zero times in num.
+The condition holds true for every index in "1210", so return true.</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> num = "030"
+<strong>Output:</strong> false
+<strong>Explanation:</strong>
+num[0] = '0'. The digit 0 should occur zero times, but actually occurs twice in num.
+num[1] = '3'. The digit 1 should occur three times, but actually occurs zero times in num.
+num[2] = '0'. The digit 2 occurs zero times in num.
+The indices 0 and 1 both violate the condition, so return false.</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>n == num.length</code></li>
+<li><code>1 &lt;= n &lt;= 10</code></li>
+<li><code>num</code> consists of digits.</li>
+</ul>
+<p><strong>Logic</strong></p>
+<p>Here we have to note down a few things:</p>
+<ol>
+<li>
+<p>The keys of the hashmap are 0- length of the string "num"</p>
+</li>
+<li>
+<p>the occurence of each key is checked in the number. Accordingly the value to the Key is assigned.</p>
+</li>
+</ol>
+<p>E.g: For the number "1210"</p>
+<p>num[0] = '1'. The digit 0 occurs once in num.
+   num[1] = '2'. The digit 1 occurs twice in num.
+   num[2] = '1'. The digit 2 occurs once in num.
+   num[3] = '0'. The digit 3 occurs zero times in num.
+   The condition holds true for every index in "1210", so return true.</p>
+<ol>
+<li>To get the result "True": value assigned to each key in hashmap , should match the digit at the key index in number. e.g  for the number "1210"</li>
+</ol>
+<p>Hash Map </p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Values</th>
+<th></th>
+<th>Number</th>
+<th>Digit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td>num[0]</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td></td>
+<td>num[1]</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td>num[2]</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td></td>
+<td>num[3]</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>The "0"s in the beginning of the number are counted e.g- the number "030" has 2 zeros</li>
+</ol>
+<p>code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">digitCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+        <span class="n">record_check</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">original_number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+            <span class="n">record_check</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">original_number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">record_check</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">record_check</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span>
+                <span class="n">record_check</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">original_number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">record_check</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<h2 id="32-medium-problem">3.2 Medium problem</h2>
+<p><a href="https://leetcode.com/problems/unique-length-3-palindromic-subsequences/">1930. Unique Length-3 Palindromic Subsequences</a></p>
+<p>(Medium)</p>
+<p>Given a string <code>s</code>, return <em>the number of </em><em>unique palindromes of length three</em><em> that are a </em><em>subsequence</em><em> of</em> <code>s</code>.</p>
+<p>Note that even if there are multiple ways to obtain the same subsequence, it is still only counted <strong>once</strong>.</p>
+<p>A <strong>palindrome</strong> is a string that reads the same forwards and backwards.</p>
+<p>A <strong>subsequence</strong> of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.</p>
+<ul>
+<li>For example, <code>"ace"</code> is a subsequence of <code>"&lt;u&gt;a&lt;/u&gt;b&lt;u&gt;c&lt;/u&gt;d&lt;u&gt;e&lt;/u&gt;"</code>.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> s = "aabca"
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> The 3 palindromic subsequences of length 3 are:</p>
+<ul>
+<li>"aba" (subsequence of "<u>a</u>a<u>b</u>c<u>a</u>")</li>
+<li>"aaa" (subsequence of "<u>aa</u>bc<u>a</u>")</li>
+<li>"aca" (subsequence of "<u>a</u>ab<u>ca</u>")</li>
+</ul>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> s = "adc"
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> There are no palindromic subsequences of length 3 in "adc".</p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> s = "bbcbaba"
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> The 4 palindromic subsequences of length 3 are:</p>
+<ul>
+<li>"bbb" (subsequence of "<u>bb</u>c<u>b</u>aba")</li>
+<li>"bcb" (subsequence of "<u>b</u>b<u>cb</u>aba")</li>
+<li>"bab" (subsequence of "<u>b</u>bcb<u>ab</u>a")</li>
+<li>"aba" (subsequence of "bbcb<u>aba</u>")</li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>3 &lt;= s.length &lt;= 105</code></li>
+<li><code>s</code> consists of only lowercase English letters.</li>
+</ul>
+<p><strong>Logic:</strong></p>
+<p>Let's take the string "bbcbaba""</p>
+<p>We need 3 values:</p>
+<p><strong>1. First occurence of a character:</strong> The first index position of the character </p>
+<p><strong>2. Last occurence of a character</strong>: The last index postition of the character. If the character occurse only once, then the first index and last index of the character is same.</p>
+<p>To keep track of characters and their index values, we use HashMaps since the character {keys} should be unique and their index position {value} should be stored with respect to the particular character</p>
+<p><em>NOTE: Since this is a key, value pair, we use the dictionary datatype in python.</em></p>
+<p><strong>3. Unique Characters:</strong> The number of characters present in between the first and the last index. </p>
+<p>Note: the character must be unique, since palindromes of repeated letters would be counted as one.</p>
+<p>E.g: "bbb" formed by "b"s at 0th,1st and 5th index is the same as "bbb" formed by "b"s at 0th,2nd and 5th index.</p>
+<p>Hence to maintain the uniqueness of characters we use HashSet</p>
+<p><em>NOTE: To maintain the uniqueness we use the Set datatype in python.</em></p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>First Occurrence</th>
+<th>Last Occurrence</th>
+<th>Unique Characters Count (t)</th>
+<th>Palindromes Count (a)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'a'</td>
+<td>4</td>
+<td>6</td>
+<td>1{b}</td>
+<td>1</td>
+</tr>
+<tr>
+<td>'b'</td>
+<td>0</td>
+<td>5</td>
+<td>3{a,b,c}</td>
+<td>3</td>
+</tr>
+<tr>
+<td>'c'</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>code:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">countPalindromicSubsequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">total_palindromes</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">first_occurrence</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">last_occurrence</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">first_occurrence</span><span class="p">:</span>
+                <span class="n">last_occurrence</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">first_occurrence</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="n">last_occurrence</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">first_occurrence</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">first_occurrence</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">last_occurrence</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">between</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ch</span><span class="p">[</span><span class="n">start</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">end</span><span class="p">])</span>
+                    <span class="n">total_palindromes</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">between</span><span class="p">)</span>            
+        <span class="k">return</span> <span class="n">total_palindromes</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.instant"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+    
+  </body>
+</html>
